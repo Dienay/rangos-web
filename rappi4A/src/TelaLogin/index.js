@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom'
 import axios from 'axios'
-import {Login, FormLogin, FormInputEmail, FormInputPassword, RectangleInputEmail, RectangleInputPassword, 
-        Title,Text, ButtonEnter, LabelInput, RectangleLabelEmail, RectangleLabelPassword, TitleEnter, 
-        LogoIcon, ViewPasswordIcon} from './styles'
+
+import {Container, Login, Title,Text, TitleEnter, LogoIcon, ViewPasswordIcon} from './styles'
+import {Form} from '../Common/Form/styled'
+
 import Logo from '../logo-invert.png'
 import Senha from '../senha.png'
 import useInput from '../Hooks/useInput'
+
 
 const baseUrl = "https://us-central1-missao-newton.cloudfunctions.net/rappi4A"
 
@@ -52,45 +54,43 @@ function TelaLogin() {
   }
 
   return (
-    <Login>
-      <LogoIcon src={Logo} alt="Logo Rappi4"/>
-      <TitleEnter>
-        <p>Entrar</p>
-      </TitleEnter>
-      <FormLogin onSubmit={login}>
-        <RectangleInputEmail>
-          <RectangleLabelEmail>
-            <LabelInput>E-mail *</LabelInput>
-          </RectangleLabelEmail>
-          <FormInputEmail 
-            value={form.email}
-            name= "email"
-            placeholder= "email@email.com"
-            type='email'    
-            onChange={handleInputChange}
-            required
-          />
-        </RectangleInputEmail>
-        <RectangleInputPassword>
-          <RectangleLabelPassword>
-            <LabelInput>Senha *</LabelInput>
-          </RectangleLabelPassword>
-          <FormInputPassword
-            value={form.password}
-            name= "password"
-            placeholder="Mínimo 6 caracteres" 
-            type={password ? "password" : "text"}
-            onChange={handleInputChange}
-            required  
-          />
-          <ViewPasswordIcon onClick={changePassword} src={Senha} alt="View Password Icon"/>
-        </RectangleInputPassword>
-        <ButtonEnter>Entrar</ButtonEnter>
-      </FormLogin>
-      <Title>
-        <Text>Não possui cadastro?<span onClick={telaDeCadastro}> Clique aqui </span></Text>
-      </Title>
-    </Login>
+    <Container>
+      <Login>
+        <LogoIcon src={Logo} alt="Logo Rappi4"/>
+        <TitleEnter>
+          <p>Entrar</p>
+        </TitleEnter>
+        <Form onSubmit={login}>
+          <div>
+            <label>E-mail *</label>
+            <input 
+              value={form.email}
+              name= "email"
+              placeholder= "email@email.com"
+              type='email'    
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div>
+            <label>Senha *</label>
+            <input
+              value={form.password}
+              name= "password"
+              placeholder="Mínimo 6 caracteres" 
+              type={password ? "password" : "text"}
+              onChange={handleInputChange}
+              required  
+            />
+            <ViewPasswordIcon onClick={changePassword} src={Senha} alt="View Password Icon"/>
+          </div>
+          <button>Entrar</button>
+        </Form>
+        <Title>
+          <Text>Não possui cadastro?<span onClick={telaDeCadastro}> Clique aqui </span></Text>
+        </Title>
+      </Login>
+    </Container>
   )
 }
 
