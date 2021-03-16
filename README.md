@@ -1,7 +1,7 @@
 # Rappi4A
 <br>
 
- [Rappi4A](http://dienay-rappi4a.surge.sh/)
+ [Rappi4A](http://dienay-rappi4a.surge.sh/) utilizar visualizando como dispositivo móvel, versão para desktop ainda em desenvolvimento.
 
 <br>
 
