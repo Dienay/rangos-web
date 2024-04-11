@@ -1,0 +1,134 @@
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.main {
+  background-color: #fefefe;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.login {
+  font-family: Roboto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 94vw;
+  max-width: 350px;
+
+  animation-name: fade;
+  animation-duration: 1s;
+}
+
+.logoIcon {
+  width: 104px;
+  height: 58px;
+  object-fit: contain;
+}
+
+.titleEnter {
+  width: 360px;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.novoUsuario {
+  width: 360px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cadastrar {
+  width: 296px;
+  height: 18px;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.39px;
+  text-align: center;
+  cursor: pointer;
+  color: var(--black);
+}
+
+.viewPasswordIcon {
+  height: 24px;
+  object-fit: contain;
+  position: absolute;
+  right: 24px;
+  bottom: 32px;
+  width: 24px;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  width: 100%;
+}
+
+.formulario div {
+  position: relative;
+  width: 100%;
+}
+
+.formulario label {
+  position: absolute;
+  left: 16px;
+  top: -8px;
+  background-color: #fefefe;
+  display: block;
+  padding: 0 2px;
+  width: 78px;
+  height: 18px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.29px;
+  color: #b8b8b8;
+
+}
+
+.formulario input {
+  /* background-color: #fefefe; */
+  width: 100%;
+  height: 56px;
+  border-radius: 4px;
+  border: solid 1px #b8b8b8;
+  margin-bottom: 16px;
+  padding-left: 8px;
+}
+
+.formulario button {
+  width: 100%;
+  height: 42px;
+  border-radius: 2px;
+  background-color: #e86e5a;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.39px;
+  text-align: center;
+  border: none;
+}
