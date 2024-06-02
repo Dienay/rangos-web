@@ -1,17 +1,23 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing:  border-box;
-        border: none;
-        outline:  none;
-        list-style: none;
-    }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing:  border-box;
+    border: none;
+    outline:  none;
+    list-style: none;
+  }
 
-    body {
-        font-family: 'Roboto', sans-serif;
-        font-size: 16px;    }
+  body {
+    font-family: "Montserrat", sans-serif;
+  }
 
-`
+  .main-container {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+  }
+`;
