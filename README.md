@@ -1,4 +1,4 @@
-# Rangos
+# Rangos ... Aplicação recebendo atualizações: Novo nome, funcionalidades e identidade visual
 <br>
 
 [Rangos](https://rangos.surge.sh/)
