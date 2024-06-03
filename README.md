@@ -1,7 +1,7 @@
-# Rappi4A
+# Rangos
 <br>
 
-[Rappi4A](http://dienay-rappi4a.surge.sh/)
+[Rangos](https://rangos.surge.sh/)
 
 <br>
 
@@ -36,7 +36,7 @@ git clone
 
 Entre na pasta do projeto:
 ```
-cd /spotDy-frontend/spotdy
+cd /Rappi-frontend
 ```
 
 Instale as dependências:
@@ -63,7 +63,7 @@ Copyright :copyright: 2020 - Rappi4A
 
 **Dienay Lima**: *Desenvolvedor web Frontend
 - [Linkedin](https://www.linkedin.com/in/dienaylima/)
-- [Portfólio](https://dienay.github.io/portfolio/)
+- [Portfólio](http://dienaylima.com/)
 - [Email](dienaylima@gmail.com)
 
 <br>
