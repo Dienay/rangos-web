@@ -27,6 +27,34 @@ function InputField({
     setPasswordVisible(!passwordVisible);
   };
 
+  const handleChange = (event) => {
+    const inputValue = event.target.value;
+
+    if (type === 'phone' || type === 'tel') {
+      if (inputValue.length > 15) {
+        return;
+      }
+
+      const digitsOnly = inputValue.replace(/\D/g, '');
+
+      // Adicionando a máscara
+      let maskedInput = '';
+      if (digitsOnly.length > 0) {
+        maskedInput += digitsOnly.substring(0, 2);
+      }
+      if (digitsOnly.length > 2) {
+        maskedInput += ' ' + digitsOnly.substring(2, 7);
+      }
+      if (digitsOnly.length > 7) {
+        maskedInput += '-' + digitsOnly.substring(7, 11);
+      }
+
+      onChange({ target: { name, value: maskedInput } });
+    } else {
+      onChange(event);
+    }
+  };
+
   return (
     <Fieldset>
       <Label>{label}</Label>
@@ -35,7 +63,7 @@ function InputField({
         name={name}
         placeholder={placeholder}
         type={type === 'password' && passwordVisible ? 'text' : type}
-        onChange={onChange}
+        onChange={handleChange}
         required={required}
         error={error ? 'true' : undefined}
       />
