@@ -20,11 +20,6 @@ export const LoginContainer = styled.section`
   width: calc(100vw - 32px);
 `;
 
-export const LogoIcon = styled.img`
-  object-fit: contain;
-  width: 148px;
-`;
-
 export const Title = styled.h3`
   font-size: ${(props) => props.theme.fontSize.h1};
   font-weight: 300;

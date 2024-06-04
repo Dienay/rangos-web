@@ -2,19 +2,12 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import {
-  LoginContainer,
-  Text,
-  Title,
-  LogoIcon,
-  Link,
-  LoginForm,
-} from './styles';
+import { LoginContainer, Text, Title, Link, LoginForm } from './styles';
 
-import Logo from '../Images/logo-rangos.svg';
 import useInput from '../Hooks/useInput';
 import InputField from '../Components/InputField';
 import Button from '../Components/Button';
+import Logo from '../Components/Logo';
 
 const baseUrl = 'http://localhost:3003';
 
@@ -80,7 +73,7 @@ function LoginPage() {
   return (
     <section className="main-container">
       <LoginContainer>
-        <LogoIcon src={Logo} alt="Logo Rangos" />
+        <Logo />
         <Title>
           <p>Entrar</p>
         </Title>
