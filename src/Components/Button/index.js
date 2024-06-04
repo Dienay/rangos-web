@@ -1,25 +1,26 @@
 import React from 'react';
-import { Button } from './styles';
+import { Btn } from './styles';
 import PropTypes from 'prop-types';
 
-function PrimaryButton({
+function Button({
   children,
   type = 'button',
   onClick = () => {},
   disabled = false,
+  variant = 'flat',
 }) {
   return (
-    <Button type={type} onClick={onClick} disabled={disabled}>
+    <Btn type={type} onClick={onClick} disabled={disabled} variant={variant}>
       {children}
-    </Button>
+    </Btn>
   );
 }
 
-PrimaryButton.propTypes = {
+Button.propTypes = {
   children: PropTypes.node.isRequired,
   onClick: PropTypes.func,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   disabled: PropTypes.bool,
 };
 
-export default PrimaryButton;
+export default Button;

@@ -10,7 +10,7 @@ from{
   }
 `;
 
-export const LoginContainer = styled.section`
+export const SignUpContainer = styled.section`
   align-items: center;
   animation-duration: 1s;
   animation-name: ${fade};
@@ -26,20 +26,23 @@ export const Title = styled.h3`
   margin: 24px 0;
 `;
 
-export const LoginForm = styled.form`
+export const CamposDeCadastro = styled.input`
+  border: ${(props) => props.borda};
+  width: 92vw;
+  height: 56px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  padding-left: 8px;
+`;
+export const Imagem = styled.img`
+  position: absolute;
+  right: 16px;
+  top: 16px;
+`;
+export const SignUpForm = styled.form`
   width: 100%;
-`;
 
-export const Text = styled.p`
-  font-size: 1rem;
-  margin-top: 24px;
-`;
-
-export const Link = styled.a`
-  background-color: white;
-  display: inline-block;
-  margin-left: 4px;
-  font-size: 1rem;
-  text-decoration: underline;
-  cursor: pointer;
+  button:first-of-type {
+    margin-bottom: 16px;
+  }
 `;

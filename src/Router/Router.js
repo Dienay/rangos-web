@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TelaInicial from '../TelaInicial';
 import LoginPage from '../LoginPage';
-import TelaDeCadastro from '../TelaDeCadastro';
+import SignUp from '../SignUpPage';
 import TelaHome from '../TelaHome';
 import TelaListaDeRestaurantes from '../TelaListaDeRestaurantes';
 import TelaDeCarrinho from '../TelaDeCarrinho';
@@ -16,7 +16,7 @@ function Router() {
       <Routes>
         <Route exact path="/" element={<TelaInicial />} />
         <Route exact path="/login" element={<LoginPage />} />
-        <Route exact path="/cadastro" element={<TelaDeCadastro />} />
+        <Route exact path="/cadastro" element={<SignUp />} />
         <Route exact path="/home" element={<TelaHome />} />
         <Route
           exact
