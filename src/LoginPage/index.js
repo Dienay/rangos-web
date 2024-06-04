@@ -14,7 +14,7 @@ import {
 import Logo from '../Images/logo-rangos.svg';
 import useInput from '../Hooks/useInput';
 import InputField from '../Components/InputField';
-import PrimaryButton from '../Components/Button';
+import Button from '../Components/Button';
 
 const baseUrl = 'http://localhost:3003';
 
@@ -107,7 +107,7 @@ function LoginPage() {
             error={inputError.password}
             message={inputError.passwordMessage}
           />
-          <PrimaryButton type="submit">Entrar</PrimaryButton>
+          <Button type="submit">Entrar</Button>
         </LoginForm>
         <Text>
           Não possui cadastro?
