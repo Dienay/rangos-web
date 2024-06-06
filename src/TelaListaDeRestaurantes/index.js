@@ -9,7 +9,6 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import useProtectedRoute from '../Hooks/useProtectedRoute';
 
-import Menu from '../Components/Menu/index';
 import Loading from '../Components/Loading/index';
 import CarrinhoContext from '../Contexts/CarrinhoContext';
 
@@ -269,7 +268,6 @@ function TelaListaDeRestaurantes() {
                 </ListaRestaurantes>
               );
             })}
-          <Menu />
         </Container>
       )}
     </>

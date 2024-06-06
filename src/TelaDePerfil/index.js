@@ -14,7 +14,6 @@ import Editar from '../Components/Editar';
 import EditarEndereco from '../Components/EditarEndereco';
 import Loading from '../Components/Loading';
 import axios from 'axios';
-import Menu from '../Components/Menu/index';
 
 import useProtectedRoute from '../Hooks/useProtectedRoute';
 
@@ -157,7 +156,6 @@ function TelaDePerfil() {
           )}
         </>
       )}
-      <Menu />
     </ContainerPerfil>
   );
 }
