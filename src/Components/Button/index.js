@@ -7,10 +7,10 @@ function Button({
   type = 'button',
   onClick = () => {},
   disabled = false,
-  variant = 'flat',
+  $variant = 'flat',
 }) {
   return (
-    <Btn type={type} onClick={onClick} disabled={disabled} variant={variant}>
+    <Btn type={type} onClick={onClick} disabled={disabled} $variant={$variant}>
       {children}
     </Btn>
   );

@@ -15,8 +15,8 @@ const large = css`
 export const LogoStyle = styled.img`
   object-fit: contain;
 
-  ${({ variant }) => {
-    switch (variant) {
+  ${({ $variant }) => {
+    switch ($variant) {
       case 'small':
         return small;
       case 'normal':

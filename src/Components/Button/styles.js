@@ -23,8 +23,8 @@ export const Btn = styled.button`
   text-align: center;
   width: 100%;
 
-  ${({ variant }) => {
-    switch (variant) {
+  ${({ $variant }) => {
+    switch ($variant) {
       case 'flat':
         return flat;
       case 'outline':

@@ -31,7 +31,7 @@ function Header({ orderLength = 0 }) {
   return (
     <HeaderContainer>
       <LogoButton onClick={() => navigate('/home')}>
-        <Logo variant="small" />
+        <Logo $variant="small" />
       </LogoButton>
       <UserUtilities>
         {isLoggedIn ? (
