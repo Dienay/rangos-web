@@ -5,7 +5,6 @@ import Loading from '../Components/Loading';
 
 import { Container, SearchInput, EstablishmentList } from './styles';
 
-import Logo from '../Images/logo-rangos.svg';
 import Header from '../Components/Header';
 import CardEstablishment from '../Components/CardEstablishment';
 import { API_URL } from '../config';
