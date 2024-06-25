@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { backgroundColor, color, fontSize } from '../../styles/styleUtils';
 
 export const Fieldset = styled.fieldset`
   position: relative;
@@ -7,10 +8,10 @@ export const Fieldset = styled.fieldset`
 `;
 
 export const Label = styled.label`
-  background-color: ${(props) => props.theme.colors.white};
-  color: ${(props) => props.theme.colors.textGrey};
+  ${backgroundColor('white')};
+  ${color('textGrey')};
   display: inline-block;
-  font-size: ${(props) => props.theme.fontSize.label};
+  ${fontSize('label')};
   height: 18px;
   left: 16px;
   padding: 0 8px;
@@ -26,8 +27,7 @@ export const Input = styled.input`
       props.error
         ? (props) => props.theme.colors.error
         : (props) => props.theme.colors.textGrey};
-  font-size: 1rem;
-  font-size: ${(props) => props.theme.fontSize.body};
+  ${fontSize('body')};
   padding: 20px;
   width: 100%;
 `;
@@ -44,8 +44,8 @@ export const ErrorMessage = styled.div`
   padding: 0 8px;
 
   p {
-    color: ${(props) => props.theme.colors.error};
-    font-size: ${(props) => props.theme.fontSize.label};
+    ${color('error')};
+    ${fontSize('label')};
     line-height: 24px;
   }
 `;
