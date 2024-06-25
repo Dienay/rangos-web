@@ -11,7 +11,7 @@ import {
 } from './styles';
 import Logo from '../../Images/logo-rangos.svg';
 
-const CardEstablishment = ({ establishment }) => {
+const CardEstablishment = ({ establishment, onClick }) => {
   const isEstablishmentOpen = (openingHours) => {
     const days = [
       'Sunday',
@@ -54,10 +54,7 @@ const CardEstablishment = ({ establishment }) => {
     return false;
   };
   return (
-    <CardContainer
-      key={establishment._id}
-      // onClick={() => clicaestablishment(establishment.id)}
-    >
+    <CardContainer onClick={onClick}>
       <EstablishmentLogo
         src={establishment.coverPhoto}
         onError={(e) => {
