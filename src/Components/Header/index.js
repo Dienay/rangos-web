@@ -35,7 +35,7 @@ function Header({ orderLength = 0 }) {
       </LogoButton>
       <UserUtilities>
         {isLoggedIn ? (
-          <Dropdown />
+          <Dropdown setIsLoggedIn={setIsLoggedIn} />
         ) : (
           <SingUpLink onClick={() => navigate('/login')}>Entrar</SingUpLink>
         )}

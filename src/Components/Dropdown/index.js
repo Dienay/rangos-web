@@ -7,7 +7,7 @@ import {
   DropdownItem,
 } from './styles';
 
-function Dropdown() {
+function Dropdown({ setIsLoggedIn }) {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -24,6 +24,11 @@ function Dropdown() {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setIsOpen(false);
     }
+  };
+
+  const logout = () => {
+    window.localStorage.removeItem('token');
+    setIsLoggedIn(false);
   };
 
   useEffect(() => {
@@ -47,7 +52,9 @@ function Dropdown() {
         <DropdownItem href="#option2" onClick={() => onClickMenu('/cadastro')}>
           Option 2
         </DropdownItem>
-        <DropdownItem href="#option3">Option 3</DropdownItem>
+        <DropdownItem onClick={logout} href="#option3">
+          Logout
+        </DropdownItem>
       </DropdownContent>
     </DropdownContainer>
   );
