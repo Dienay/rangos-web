@@ -1,24 +1,32 @@
 import styled, { css } from 'styled-components';
+import {
+  backgroundColor,
+  border,
+  color,
+  fontSize,
+} from '../../styles/styleUtils';
 
 const flat = css`
-  background-color: ${(props) => props.theme.colors.primary};
   border: none;
 `;
 
 const outline = css`
+  ${border('thin', 'primary')}
+  ${color('primary')};
   background-color: transparent;
-  border: 1px solid ${(props) => props.theme.colors.primary};
 `;
 
 const rounded = css`
-  background-color: ${(props) => props.theme.colors.primary};
+  border-radius: 50px;
 `;
 
 export const Btn = styled.button`
-  display: inline-block;
+  ${backgroundColor('primary')};
+  ${color('white')};
+  ${fontSize('body')};
   border-radius: 4px;
   cursor: pointer;
-  font-size: 1rem;
+  display: inline-block;
   padding: 16px;
   text-align: center;
   width: 100%;
