@@ -39,7 +39,6 @@ import {
 } from '../TelaListaDeRestaurantes/styles';
 import axios from 'axios';
 import CarrinhoContext from '../Contexts/CarrinhoContext';
-import Menu from '../Components/Menu/index';
 import useProtectedRoute from '../Hooks/useProtectedRoute';
 import { useNavigate } from 'react-router-dom';
 
@@ -264,7 +263,6 @@ function TelaDeCarrinho() {
           </ButtonConfirmCart>
         </OptionsPayMethod>
       </Container>
-      <Menu />
     </Cart>
   );
 }

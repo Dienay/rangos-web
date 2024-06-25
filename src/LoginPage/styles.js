@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { backgroundColor, fontSize } from '../styles/styleUtils';
 
 const fade = keyframes`
 from{
@@ -21,7 +22,7 @@ export const LoginContainer = styled.section`
 `;
 
 export const Title = styled.h3`
-  font-size: ${(props) => props.theme.fontSize.h1};
+  ${fontSize('h1')};
   font-weight: 300;
   margin: 24px 0;
 `;
@@ -31,15 +32,14 @@ export const LoginForm = styled.form`
 `;
 
 export const Text = styled.p`
-  font-size: 1rem;
+  ${fontSize('body')};
   margin-top: 24px;
 `;
 
 export const Link = styled.a`
-  background-color: white;
   display: inline-block;
   margin-left: 4px;
-  font-size: 1rem;
+  ${fontSize('body')};
   text-decoration: underline;
   cursor: pointer;
 `;

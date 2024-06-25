@@ -8,8 +8,9 @@ import useInput from '../Hooks/useInput';
 import InputField from '../Components/InputField';
 import Button from '../Components/Button';
 import Logo from '../Components/Logo';
+import { API_URL } from '../config';
 
-const baseUrl = 'http://localhost:3003';
+const baseUrl = API_URL;
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -53,19 +54,25 @@ function LoginPage() {
           navigate('/cadastro');
         }
       })
-
       .catch((err) => {
-        console.log('Erro', err.message);
-        if (err.response.status === 404) {
-          setInputError({
-            email: true,
-            emailMessage: 'E-mail inválido',
-          });
-        } else if (err.response.status === 422) {
-          setInputError({
-            password: true,
-            passwordMessage: 'Senha inválida',
-          });
+        console.log('Erro:', err.message);
+
+        if (err.response) {
+          // Somente tente acessar err.response.status se err.response estiver definido
+          if (err.response.status === 404) {
+            setInputError({
+              email: true,
+              emailMessage: 'E-mail inválido',
+            });
+          } else if (err.response.status === 422) {
+            setInputError({
+              password: true,
+              passwordMessage: 'Senha inválida',
+            });
+          }
+        } else {
+          // Lide com outros tipos de erros aqui
+          console.log('Erro desconhecido', err);
         }
       });
   };

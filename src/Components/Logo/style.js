@@ -1,6 +1,30 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const LogoIcon = styled.img`
+const small = css`
+  height: 48px;
+`;
+
+const normal = css`
+  height: 64px;
+`;
+
+const large = css`
+  height: 80px;
+`;
+
+export const LogoStyle = styled.img`
   object-fit: contain;
-  width: 148px;
+
+  ${({ $variant }) => {
+    switch ($variant) {
+      case 'small':
+        return small;
+      case 'normal':
+        return normal;
+      case 'large':
+        return large;
+      default:
+        return normal;
+    }
+  }}
 `;

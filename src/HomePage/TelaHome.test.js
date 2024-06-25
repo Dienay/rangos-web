@@ -1,11 +1,11 @@
-import React, { useState, useContext, useReducer } from 'react';
-import { render, wait, getByPlaceholderText } from '@testing-library/react';
+import React from 'react';
+import { render, wait } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import TelaHome from './index';
 import CarrinhoContext from '../Contexts/CarrinhoContext';
 import FiltrosContext from '../Contexts/FiltrosContext';
 import axios from 'axios';
-import { Router, MemoryRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import { createMemorynavigate } from 'navigate';
 import userEvent from '@testing-library/user-event';
 
@@ -119,7 +119,7 @@ describe('Testa se os elementos do Feed aparecem na tela e se as interações re
     });
 
     const mensagem = getByText('Busque por nome de restaurantes');
-    expect(mensagem).toBeInTheDocument;
+    expect(mensagem).toBeInTheDocument();
 
     const categoria = queryByText('Árabe');
     expect(categoria).not.toBeInTheDocument();
