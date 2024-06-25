@@ -54,19 +54,25 @@ function LoginPage() {
           navigate('/cadastro');
         }
       })
-
       .catch((err) => {
-        console.log('Erro', err.message);
-        if (err.response.status === 404) {
-          setInputError({
-            email: true,
-            emailMessage: 'E-mail inválido',
-          });
-        } else if (err.response.status === 422) {
-          setInputError({
-            password: true,
-            passwordMessage: 'Senha inválida',
-          });
+        console.log('Erro:', err.message);
+
+        if (err.response) {
+          // Somente tente acessar err.response.status se err.response estiver definido
+          if (err.response.status === 404) {
+            setInputError({
+              email: true,
+              emailMessage: 'E-mail inválido',
+            });
+          } else if (err.response.status === 422) {
+            setInputError({
+              password: true,
+              passwordMessage: 'Senha inválida',
+            });
+          }
+        } else {
+          // Lide com outros tipos de erros aqui
+          console.log('Erro desconhecido', err);
         }
       });
   };
