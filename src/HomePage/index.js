@@ -8,11 +8,12 @@ import { Container, SearchInput, EstablishmentList } from './styles';
 import Logo from '../Images/logo-rangos.svg';
 import Header from '../Components/Header';
 import CardEstablishment from '../Components/CardEstablishment';
+import { API_URL } from '../config';
 
 const HomePage = () => {
   const navigate = useNavigate();
 
-  const baseUrl = 'http://localhost:3003';
+  const baseUrl = API_URL;
 
   const [establishmentList, setEstablishmentList] = useState([]);
   const [search, setSearch] = useState('');

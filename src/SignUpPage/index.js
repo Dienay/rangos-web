@@ -6,8 +6,9 @@ import useInput from '../Hooks/useInput';
 import Logo from '../Components/Logo';
 import InputField from '../Components/InputField';
 import Button from '../Components/Button';
+import { API_URL } from '../config';
 
-const baseUrl = 'http://localhost:3003';
+const baseUrl = API_URL;
 
 function SignUp() {
   const navigate = useNavigate();
