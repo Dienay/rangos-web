@@ -64,7 +64,6 @@ function SignUp() {
         window.localStorage.setItem('token', response.data.token);
 
         if (response.data.token) {
-          console.log(response.data.token);
           navigate('/home');
         }
       })
@@ -146,7 +145,7 @@ function SignUp() {
             onClick={() => {
               navigate('/login');
             }}
-            variant="outline"
+            $variant="outline"
           >
             Voltar
           </Button>
