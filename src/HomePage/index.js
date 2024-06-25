@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../Components/Loading';
 
-import { Container, SearchInput, EstablishmentList } from './styles';
+import { Container, SearchInput, EstablishmentList, Feed } from './styles';
 
 import Header from '../Components/Header';
 import CardEstablishment from '../Components/CardEstablishment';
@@ -25,10 +25,10 @@ const HomePage = () => {
     } catch (err) {
       console.log(err);
     }
-  }, []);
+  }, [baseUrl]);
 
-  const clicaestablishment = (id) => {
-    navigate(`/restaurantes/${id}`);
+  const openEstablishment = (id) => {
+    navigate(`/establishments/${id}`);
   };
 
   const filteredEstablishments = establishmentList.filter((establishment) =>
@@ -53,11 +53,19 @@ const HomePage = () => {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-            <EstablishmentList>
-              {filteredEstablishments.map((establishment) => {
-                return <CardEstablishment establishment={establishment} />;
-              })}
-            </EstablishmentList>
+            <Feed>
+              <EstablishmentList>
+                {filteredEstablishments.map((establishment) => {
+                  return (
+                    <CardEstablishment
+                      key={establishment._id}
+                      establishment={establishment}
+                      onClick={() => openEstablishment(establishment._id)}
+                    />
+                  );
+                })}
+              </EstablishmentList>
+            </Feed>
           </Container>
         </>
       )}

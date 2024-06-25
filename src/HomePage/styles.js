@@ -19,10 +19,14 @@ export const SearchInput = styled.input`
   ${color('textGrey')};
 `;
 
+export const Feed = styled.section`
+  padding: 24px 0;
+`;
+
 export const EstablishmentList = styled.div`
   display: flex;
+  gap: 16px;
   flex-wrap: wrap;
-  padding: 0 16px;
 `;
 
 export const ResultadoTexto = styled.p`
