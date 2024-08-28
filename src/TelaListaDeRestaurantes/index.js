@@ -14,13 +14,7 @@ import CarrinhoContext from '../Contexts/CarrinhoContext';
 
 import {
   Container,
-  Overlay,
-  Header,
-  HeaderTitulo,
-  HeaderIcone,
-  ListaRestaurantes,
-  ListaCategoria,
-  CardRestaurante,
+  EstablishmentInfo,
   CardImagemRestaurante,
   CardProduto,
   CardImagem,
@@ -37,29 +31,22 @@ import {
   BoxTexto,
   BoxSelect,
   BoxBtn,
+  ProductList,
+  EstablishmentLogo,
 } from './styles';
 
 import iconeVoltar from '../Images/back.svg';
+import { API_URL } from '../config';
+import Header from '../Components/Header';
 
 function TelaListaDeRestaurantes() {
   const navigate = useNavigate();
   const pathParams = useParams();
-  const token = useProtectedRoute();
 
-  const baseUrl =
-    'https://us-central1-missao-newton.cloudfunctions.net/rappi4A/restaurants';
+  const baseUrl = API_URL;
 
-  const axiosConfig = useMemo(
-    () => ({
-      headers: {
-        auth: token,
-      },
-    }),
-    [token],
-  );
-
-  const [detalhesRestaurante, setDetalhesRestaurante] = useState();
-  const [produtos, setProdutos] = useState();
+  const [establishment, setEstablishment] = useState();
+  const [products, setProducts] = useState();
   const [quantidadeSelecionada, setQuantidadeSelecionada] = useState(0);
   const [boxQuantidade, setBoxQuantidade] = useState(false);
 
@@ -69,65 +56,58 @@ function TelaListaDeRestaurantes() {
     const id = pathParams.id;
 
     try {
-      const response = await axios.get(`${baseUrl}/${id}`, axiosConfig);
-      setDetalhesRestaurante(response.data.restaurant);
-      setProdutos(response.data.restaurant.products);
+      const response = await axios.get(
+        `${baseUrl}/establishments/${id}/products`,
+      );
+      setEstablishment(response.data.establishment);
+      setProducts(response.data.products);
     } catch (err) {
       console.log(err);
     }
-  }, [axiosConfig, pathParams.id]);
+  }, [baseUrl, pathParams.id]);
 
   useEffect(() => {
     getRestaurantes();
   }, [getRestaurantes]);
 
-  let categorias = [];
-  if (produtos) {
-    const pegaCategorias = produtos.map((produto) => produto.category);
-
-    categorias = pegaCategorias.filter((categoria, idx) => {
-      return pegaCategorias.indexOf(categoria) === idx;
-    });
-  }
-
   const abrirBoxQuantidade = (id) => {
-    const indexId = produtos.findIndex((produto) => {
+    const indexId = products.findIndex((produto) => {
       return produto.id === id;
     });
 
-    const produto = produtos[indexId];
+    const produto = products[indexId];
 
     setBoxQuantidade(produto);
   };
 
-  const adicionaQuantidadeProduto = (
-    produto,
-    quantidadeSelecionada,
-    restauranteId,
-    restauranteName,
-  ) => {
-    if (quantidadeSelecionada > 0) {
-      carrinhoContext.dispatch({
-        type: 'ADICIONA_PRODUTO_CARRINHO',
-        produto: produto,
-        quantidadeSelecionada: quantidadeSelecionada,
-        restauranteId: restauranteId,
-      });
-    }
+  // const adicionaQuantidadeProduto = (
+  //   produto,
+  //   quantidadeSelecionada,
+  //   restauranteId,
+  //   restauranteName,
+  // ) => {
+  //   if (quantidadeSelecionada > 0) {
+  //     carrinhoContext.dispatch({
+  //       type: 'ADICIONA_PRODUTO_CARRINHO',
+  //       produto: produto,
+  //       quantidadeSelecionada: quantidadeSelecionada,
+  //       restauranteId: restauranteId,
+  //     });
+  //   }
 
-    setBoxQuantidade(false);
-    setQuantidadeSelecionada(0);
-  };
-  const contolaQuantidadeProduto = (e) => {
-    setQuantidadeSelecionada(e.target.value);
-  };
+  //   setBoxQuantidade(false);
+  //   setQuantidadeSelecionada(0);
+  // };
+  // const contolaQuantidadeProduto = (e) => {
+  //   setQuantidadeSelecionada(e.target.value);
+  // };
 
-  const removerProduto = (produtoId) => {
-    carrinhoContext.dispatch({
-      type: 'REMOVE_PRODUTO_CARRINHO',
-      produtoId: produtoId,
-    });
-  };
+  // const removerProduto = (produtoId) => {
+  //   carrinhoContext.dispatch({
+  //     type: 'REMOVE_PRODUTO_CARRINHO',
+  //     produtoId: produtoId,
+  //   });
+  // };
 
   const optionQuantidade = () => {
     let quantidades = [];
@@ -148,66 +128,64 @@ function TelaListaDeRestaurantes() {
   };
 
   const clicaVoltar = () => {
-    navigate(`/home`);
+    navigate(`/`);
   };
 
   return (
     <>
-      {!detalhesRestaurante || detalhesRestaurante === '' ? (
+      {!establishment || establishment === '' ? (
         <Loading />
       ) : (
-        <Container>
-          <Overlay aparece={boxQuantidade}></Overlay>
-          <Header>
-            <HeaderIcone
-              src={iconeVoltar}
-              onClick={clicaVoltar}
-              alt="Ícone de voltar para a tela anterior"
-            />
-            <HeaderTitulo>Restaurante</HeaderTitulo>
-          </Header>
+        <>
+          <Header orderLength={0} />
+          <Container>
+            {establishment && (
+              <EstablishmentInfo>
+                <EstablishmentLogo
+                  src={establishment.coverPhoto}
+                  alt={establishment.name}
+                />
+                <CardNome>{establishment.name}</CardNome>
+                <CardInfo CardInfo>{establishment.category}</CardInfo>
+                <CardTextoDelivery>
+                  <CardInfo>
+                    Entrega: {establishment.deliveryTime} min - R$
+                    {establishment.shipping},00
+                  </CardInfo>
+                </CardTextoDelivery>
+                <CardInfo>
+                  {establishment.address.map((address) => {
+                    return (
+                      <CardInfo>
+                        <p>description: {address.description}</p>
+                        <p>street: {address.street}</p>
+                        <p>number: {address.number}</p>
+                        <p>complement: {address.complement}</p>
+                        <p>neighborhood: {address.neighborhood}</p>
+                        <p>city: {address.city}</p>
+                        <p>state: {address.state}</p>
+                      </CardInfo>
+                    );
+                  })}
+                </CardInfo>
+              </EstablishmentInfo>
+            )}
 
-          {detalhesRestaurante && (
-            <CardRestaurante>
-              <CardImagemRestaurante
-                src={detalhesRestaurante.logoUrl}
-                alt={detalhesRestaurante.name}
-              />
-              <CardNome>{detalhesRestaurante.name}</CardNome>
-              <CardInfo CardInfo>{detalhesRestaurante.category}</CardInfo>
-              <CardTextoDelivery>
-                <CardInfo>{detalhesRestaurante.deliveryTime} min</CardInfo>
-                <CardInfo>Frete R${detalhesRestaurante.shipping},00</CardInfo>
-              </CardTextoDelivery>
-              <CardInfo>{detalhesRestaurante.address}</CardInfo>
-            </CardRestaurante>
-          )}
+            {establishment && products && (
+              <ProductList>
+                {products.map((produto) => {
+                  return (
+                    <CardProduto key={produto.id}>
+                      <CardImagem src={produto.coverPhoto} alt={produto.name} />
+                      <CardTexto>
+                        <CardNome>{produto.name}</CardNome>
+                        <CardDescription>{produto.description}</CardDescription>
+                        <CardPrice>
+                          R${produto.price.toFixed(2).replace('.', ',')}
+                        </CardPrice>
+                      </CardTexto>
 
-          {detalhesRestaurante &&
-            produtos &&
-            categorias.map((categoria) => {
-              return (
-                <ListaRestaurantes key={categoria}>
-                  <ListaCategoria>{categoria}</ListaCategoria>
-                  {produtos.map((produto) => {
-                    if (categoria === produto.category) {
-                      return (
-                        <CardProduto key={produto.id}>
-                          <CardImagem
-                            src={produto.photoUrl}
-                            alt={produto.name}
-                          />
-                          <CardTexto>
-                            <CardNome>{produto.name}</CardNome>
-                            <CardDescription>
-                              {produto.description}
-                            </CardDescription>
-                            <CardPrice>
-                              R${produto.price.toFixed(2).replace('.', ',')}
-                            </CardPrice>
-                          </CardTexto>
-
-                          {carrinhoContext.carrinho.map((produtoCarrinho) => {
+                      {/* {carrinhoContext.carrinho.map((produtoCarrinho) => {
                             if (produto.id === produtoCarrinho.id) {
                               return (
                                 <BtnQuantidade key={produtoCarrinho.id}>
@@ -216,14 +194,14 @@ function TelaListaDeRestaurantes() {
                               );
                             }
                             return null;
-                          })}
+                          })} */}
 
-                          {carrinhoContext.carrinho.findIndex(
+                      {/* {carrinhoContext.carrinho.findIndex(
                             (produtoCarrinho) =>
                               produto.id === produtoCarrinho.id,
                           ) !== -1 ? (
                             <BtnRemoveQuantidade
-                              onClick={() => removerProduto(produto.id)}
+                            // onClick={() => removerProduto(produto.id)}
                             >
                               remover
                             </BtnRemoveQuantidade>
@@ -233,42 +211,38 @@ function TelaListaDeRestaurantes() {
                             >
                               adicionar
                             </BtnAlteraQuantidade>
-                          )}
+                          )} */}
 
-                          {boxQuantidade.id === produto.id && (
-                            <BoxQuantidade>
-                              <BoxTexto>
-                                Selecione a quantidade desejada
-                              </BoxTexto>
-                              <BoxSelect
-                                onChange={contolaQuantidadeProduto}
-                                value={quantidadeSelecionada}
-                              >
-                                {optionQuantidade()}
-                              </BoxSelect>
-                              <BoxBtn
-                                onClick={() =>
-                                  adicionaQuantidadeProduto(
-                                    produto,
-                                    quantidadeSelecionada,
-                                    detalhesRestaurante.id,
-                                    detalhesRestaurante.name,
-                                  )
-                                }
-                              >
-                                Adicionar ao carrinho
-                              </BoxBtn>
-                            </BoxQuantidade>
-                          )}
-                        </CardProduto>
-                      );
-                    }
-                    return null;
-                  })}
-                </ListaRestaurantes>
-              );
-            })}
-        </Container>
+                      {boxQuantidade.id === produto.id && (
+                        <BoxQuantidade>
+                          <BoxTexto>Selecione a quantidade desejada</BoxTexto>
+                          <BoxSelect
+                            // onChange={contolaQuantidadeProduto}
+                            value={quantidadeSelecionada}
+                          >
+                            {optionQuantidade()}
+                          </BoxSelect>
+                          <BoxBtn
+                          // onClick={() =>
+                          //   adicionaQuantidadeProduto(
+                          //     produto,
+                          //     quantidadeSelecionada,
+                          //     establishment.id,
+                          //     establishment.name,
+                          //   )
+                          // }
+                          >
+                            Adicionar ao carrinho
+                          </BoxBtn>
+                        </BoxQuantidade>
+                      )}
+                    </CardProduto>
+                  );
+                })}
+              </ProductList>
+            )}
+          </Container>
+        </>
       )}
     </>
   );

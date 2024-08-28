@@ -1,31 +1,15 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import Router from './Router/Router';
-import { GlobalStyle } from './GlobalStyles/GlobalStyle';
-import FiltrosContext from './Contexts/FiltrosContext';
-import CarrinhoContext from './Contexts/CarrinhoContext';
-import { listasReducer, initialState } from './Reducers/listas';
+import { GlobalStyle } from './styles/GlobalStyle';
 import { ThemeProvider } from 'styled-components';
-import { theme } from './GlobalStyles/theme';
+import { theme } from './styles/theme';
 
 function App() {
-  const [state, dispatch] = useReducer(listasReducer, initialState);
   return (
     <>
       <ThemeProvider theme={theme}>
-        <CarrinhoContext.Provider
-          value={{ carrinho: state.carrinho, dispatch: dispatch }}
-        >
-          <FiltrosContext.Provider
-            value={{
-              filtroCategoria: state.filtroCategoria,
-              filtroBusca: state.filtroBusca,
-              dispatch: dispatch,
-            }}
-          >
-            <GlobalStyle />
-            <Router />
-          </FiltrosContext.Provider>
-        </CarrinhoContext.Provider>
+        <GlobalStyle />
+        <Router />
       </ThemeProvider>
     </>
   );

@@ -21,13 +21,8 @@ export const LoginContainer = styled.section`
   width: calc(100vw - 32px);
 `;
 
-export const Title = styled.h3`
-  ${fontSize('h1')};
-  font-weight: 300;
-  margin: 24px 0;
-`;
-
 export const LoginForm = styled.form`
+  margin-top: 24px;
   width: 100%;
 `;
 

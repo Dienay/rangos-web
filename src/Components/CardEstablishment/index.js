@@ -75,9 +75,10 @@ const CardEstablishment = ({ establishment, onClick }) => {
             )}
           </CardInfoOpening>
           <CardInfoShipping>
+            {establishment.deliveryTime} min -
             {establishment.shipping
-              ? `Frete R$${establishment.shipping},00`
-              : 'Frete grátis'}
+              ? ` R$${establishment.shipping},00`
+              : ' grátis'}
           </CardInfoShipping>
         </CardInfo>
       </CardContent>

@@ -27,7 +27,15 @@ export const Title = styled.h3`
   margin: 24px 0;
 `;
 
+export const UserType = styled.section`
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  width: 100%;
+`;
+
 export const SignUpForm = styled.form`
+  margin-top: 24px;
   width: 100%;
 
   button:first-of-type {
