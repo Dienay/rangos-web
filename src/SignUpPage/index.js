@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { SignUpContainer, SignUpForm, Title } from './styles';
+import { SignUpContainer, SignUpForm, Title, UserType } from './styles';
 import useInput from '../Hooks/useInput';
 import Logo from '../Components/Logo';
 import InputField from '../Components/InputField';
@@ -12,12 +12,16 @@ const baseUrl = API_URL;
 
 function SignUp() {
   const navigate = useNavigate();
+  const [userType, setUserType] = useState('Customer');
+  const [customerButton, setCustomerButton] = useState(true);
+  const [establishmentButton, setEstablishmentButton] = useState(false);
   const { form, onChange } = useInput({
     name: '',
     email: '',
     phone: '',
     password: '',
     confirmPassword: '',
+    typeUser: '',
   });
 
   const [inputError, setInputError] = useState({
@@ -48,6 +52,7 @@ function SignUp() {
       email: form.email,
       phone: form.phone,
       password: form.password,
+      typeUser: userType,
     };
 
     if (form.password !== form.confirmPassword) {
@@ -82,11 +87,46 @@ function SignUp() {
       });
   };
 
+  const handleUserType = (type) => {
+    setUserType(type);
+  };
+
+  const handleButtonUserType = useCallback(() => {
+    if (userType === 'Customer') {
+      setCustomerButton(true);
+      setEstablishmentButton(false);
+    } else if (userType === 'Establishment') {
+      setCustomerButton(false);
+      setEstablishmentButton(true);
+    }
+  }, [userType]);
+
+  useEffect(() => {
+    handleButtonUserType();
+  }, [handleButtonUserType]);
+
   return (
     <section className="main-container">
       <SignUpContainer>
         <Logo />
-        <Title>Cadastrar</Title>
+        <UserType>
+          <Button
+            onClick={() => {
+              handleUserType('Customer');
+            }}
+            $variant={customerButton ? 'flat' : 'outline'}
+          >
+            Cliente
+          </Button>
+          <Button
+            onClick={() => {
+              handleUserType('Establishment');
+            }}
+            $variant={establishmentButton ? 'flat' : 'outline'}
+          >
+            Estabelecimento
+          </Button>
+        </UserType>
         <SignUpForm onSubmit={signup}>
           <InputField
             label="Nome *"

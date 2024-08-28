@@ -17,7 +17,7 @@ const HomePage = () => {
   const [establishmentList, setEstablishmentList] = useState([]);
   const [search, setSearch] = useState('');
 
-  const getRestaurantes = useCallback(async () => {
+  const getEstablishments = useCallback(async () => {
     try {
       const response = await axios.get(`${baseUrl}/establishments`);
 
@@ -28,7 +28,7 @@ const HomePage = () => {
   }, [baseUrl]);
 
   const openEstablishment = (id) => {
-    navigate(`/establishments/${id}`);
+    navigate(`/establishment/${id}`);
   };
 
   const filteredEstablishments = establishmentList.filter((establishment) =>
@@ -36,8 +36,8 @@ const HomePage = () => {
   );
 
   useEffect(() => {
-    getRestaurantes();
-  }, [getRestaurantes]);
+    getEstablishments();
+  }, [getEstablishments]);
 
   return (
     <>

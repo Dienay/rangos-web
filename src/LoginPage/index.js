@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import { LoginContainer, Text, Title, Link, LoginForm } from './styles';
+import { LoginContainer, Text, Link, LoginForm } from './styles';
 
 import useInput from '../Hooks/useInput';
 import InputField from '../Components/InputField';
@@ -46,6 +46,8 @@ function LoginPage() {
     axios
       .post(`${baseUrl}/login`, body)
       .then((response) => {
+        console.log('Login response:', response.data);
+
         window.localStorage.setItem('token', response.data.token);
         if (response.data.token) {
           resetInput();
@@ -81,9 +83,6 @@ function LoginPage() {
     <section className="main-container">
       <LoginContainer>
         <Logo />
-        <Title>
-          <p>Entrar</p>
-        </Title>
         <LoginForm onSubmit={login}>
           <InputField
             label="E-mail *"

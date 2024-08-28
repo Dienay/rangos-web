@@ -14,13 +14,13 @@ function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<TelaInicial />} />
+        <Route exact path="/" element={<HomePage />} />
         <Route exact path="/login" element={<LoginPage />} />
         <Route exact path="/cadastro" element={<SignUp />} />
         <Route exact path="/home" element={<HomePage />} />
         <Route
           exact
-          path="/restaurantes/:id"
+          path="/establishment/:id"
           element={<TelaListaDeRestaurantes />}
         />
         <Route exact path="/carrinho" element={<TelaDeCarrinho />} />
