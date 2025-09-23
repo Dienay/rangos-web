@@ -1,18 +1,18 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 import {
   backgroundColor,
   border,
   color,
   fontSize,
-} from '../../styles/styleUtils';
+} from "../../styles/styleUtils";
 
 const flat = css`
   border: none;
 `;
 
 const outline = css`
-  ${border('thin', 'primary')}
-  ${color('primary')};
+  ${border("thin", "primary")}
+  ${color("primary")};
   background-color: transparent;
 `;
 
@@ -21,9 +21,9 @@ const rounded = css`
 `;
 
 export const Btn = styled.button`
-  ${backgroundColor('primary')};
-  ${color('white')};
-  ${fontSize('body')};
+  ${backgroundColor("primary")};
+  ${color("white")};
+  ${fontSize("body")};
   border-radius: 4px;
   cursor: pointer;
   display: inline-block;
@@ -33,11 +33,11 @@ export const Btn = styled.button`
 
   ${({ $variant }) => {
     switch ($variant) {
-      case 'flat':
+      case "flat":
         return flat;
-      case 'outline':
+      case "outline":
         return outline;
-      case 'rounded':
+      case "rounded":
         return rounded;
       default:
         return flat;

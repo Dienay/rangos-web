@@ -1,9 +1,9 @@
-import React from 'react';
-import { ContainerEditarEndereco } from './styles';
-import { Header } from '../../TelaDePerfil/styles';
-import { Form } from '../Editar/styles';
-import axios from 'axios';
-import useForm from '../../Hooks/useForm';
+import React from "react";
+import { ContainerEditarEndereco } from "./styles";
+import { Header } from "../../TelaDePerfil/styles";
+import { Form } from "../Editar/styles";
+import axios from "axios";
+import useForm from "../../Hooks/useForm";
 
 function EditarEndereco(props) {
   const { form, onChange } = useForm({
@@ -36,7 +36,7 @@ function EditarEndereco(props) {
       .put(`${props.baseUrl}/address`, body, props.axiosConfig)
       .then((response) => {
         console.log(response.data);
-        alert('Endereço salvo com sucesso');
+        alert("Endereço salvo com sucesso");
       })
       .catch((err) => {
         console.log(err.message);
@@ -49,7 +49,7 @@ function EditarEndereco(props) {
         <img
           src={props.iconeVoltar}
           alt="voltar"
-          onClick={() => props.onClickMudar('perfil')}
+          onClick={() => props.onClickMudar("perfil")}
         />
         <h2>Endereço</h2>
       </Header>

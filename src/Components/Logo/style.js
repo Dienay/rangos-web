@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 const small = css`
   height: 48px;
@@ -17,11 +17,11 @@ export const LogoStyle = styled.img`
 
   ${({ $variant }) => {
     switch ($variant) {
-      case 'small':
+      case "small":
         return small;
-      case 'normal':
+      case "normal":
         return normal;
-      case 'large':
+      case "large":
         return large;
       default:
         return normal;

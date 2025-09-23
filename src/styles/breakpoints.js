@@ -1,8 +1,8 @@
 const sizes = {
-  small: '480px',
-  medium: '768px',
-  large: '1024px',
-  xlarge: '1200px',
+  small: "480px",
+  medium: "768px",
+  large: "1024px",
+  xlarge: "1200px",
 };
 
 const media = {

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { border, color, fontSize } from '../styles/styleUtils';
+import styled from "styled-components";
+import { border, color, fontSize } from "../styles/styleUtils";
 
 export const Container = styled.section`
   margin: 0 auto;
@@ -14,9 +14,9 @@ export const SearchInput = styled.input`
   width: 100%;
   padding: 20px;
   border-radius: 4px;
-  ${border('thin', 'textGrey')}
-  ${fontSize('body')};
-  ${color('textGrey')};
+  ${border("thin", "textGrey")}
+  ${fontSize("body")};
+  ${color("textGrey")};
 `;
 
 export const Feed = styled.section`

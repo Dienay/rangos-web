@@ -1,18 +1,18 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useState } from "react";
+import PropTypes from "prop-types";
 import {
   ErrorMessage,
   Fieldset,
   Input,
   Label,
   ViewPasswordIcon,
-} from './styles';
-import visible from '../../Images/icons/password-visible.svg';
-import hidden from '../../Images/icons/password-hidden.svg';
+} from "./styles";
+import visible from "../../Images/icons/password-visible.svg";
+import hidden from "../../Images/icons/password-hidden.svg";
 
 function InputField({
   label,
-  type = 'text',
+  type = "text",
   name,
   value,
   onChange,
@@ -30,23 +30,23 @@ function InputField({
   const handleChange = (event) => {
     const inputValue = event.target.value;
 
-    if (type === 'phone' || type === 'tel') {
+    if (type === "phone" || type === "tel") {
       if (inputValue.length > 15) {
         return;
       }
 
-      const digitsOnly = inputValue.replace(/\D/g, '');
+      const digitsOnly = inputValue.replace(/\D/g, "");
 
       // Adicionando a máscara
-      let maskedInput = '';
+      let maskedInput = "";
       if (digitsOnly.length > 0) {
         maskedInput += digitsOnly.substring(0, 2);
       }
       if (digitsOnly.length > 2) {
-        maskedInput += ' ' + digitsOnly.substring(2, 7);
+        maskedInput += " " + digitsOnly.substring(2, 7);
       }
       if (digitsOnly.length > 7) {
-        maskedInput += '-' + digitsOnly.substring(7, 11);
+        maskedInput += "-" + digitsOnly.substring(7, 11);
       }
 
       onChange({ target: { name, value: maskedInput } });
@@ -62,12 +62,12 @@ function InputField({
         value={value}
         name={name}
         placeholder={placeholder}
-        type={type === 'password' && passwordVisible ? 'text' : type}
+        type={type === "password" && passwordVisible ? "text" : type}
         onChange={handleChange}
         required={required}
-        error={error ? 'true' : undefined}
+        error={error ? "true" : undefined}
       />
-      {type === 'password' && (
+      {type === "password" && (
         <ViewPasswordIcon
           onClick={togglePasswordVisibility}
           src={passwordVisible ? visible : hidden}

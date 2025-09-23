@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 
 import {
   ContainerPerfil,
@@ -8,20 +8,20 @@ import {
   Historico,
   Resteurante,
   Total,
-} from './styles';
+} from "./styles";
 
-import Editar from '../Components/Editar';
-import EditarEndereco from '../Components/EditarEndereco';
-import Loading from '../Components/Loading';
-import axios from 'axios';
+import Editar from "../Components/Editar";
+import EditarEndereco from "../Components/EditarEndereco";
+import Loading from "../Components/Loading";
+import axios from "axios";
 
-import useProtectedRoute from '../Hooks/useProtectedRoute';
+import useProtectedRoute from "../Hooks/useProtectedRoute";
 
-import iconeVoltar from '../Images/back.svg';
+import iconeVoltar from "../Images/back.svg";
 
 function TelaDePerfil() {
   const baseUrl =
-    'https://us-central1-missao-newton.cloudfunctions.net/rappi4A';
+    "https://us-central1-missao-newton.cloudfunctions.net/rappi4A";
 
   const token = useProtectedRoute();
 
@@ -34,9 +34,9 @@ function TelaDePerfil() {
     [token],
   );
 
-  const [trocarTela, setTrocarTela] = useState('perfil');
-  const [dados, setDados] = useState('');
-  const [endereco, setEndereco] = useState('');
+  const [trocarTela, setTrocarTela] = useState("perfil");
+  const [dados, setDados] = useState("");
+  const [endereco, setEndereco] = useState("");
   const [historico, setHistorico] = useState([]);
 
   const pegarPerfil = useCallback(async () => {
@@ -84,11 +84,11 @@ function TelaDePerfil() {
 
   return (
     <ContainerPerfil>
-      {dados === '' && endereco === '' ? (
+      {dados === "" && endereco === "" ? (
         <Loading />
       ) : (
         <>
-          {trocarTela === 'perfil' && (
+          {trocarTela === "perfil" && (
             <>
               <Header>
                 <h2>Meu perfil</h2>
@@ -99,7 +99,7 @@ function TelaDePerfil() {
                   <p>{dados.email}</p>
                   <p>{dados.cpf}</p>
                 </div>
-                <span onClick={() => onClickMudar('editar')}>editar</span>
+                <span onClick={() => onClickMudar("editar")}>editar</span>
               </DadosPessoais>
               <InfoEndereco>
                 <div>
@@ -110,7 +110,7 @@ function TelaDePerfil() {
                     </p>
                   )}
                 </div>
-                <span onClick={() => onClickMudar('endereco')}>editar</span>
+                <span onClick={() => onClickMudar("endereco")}>editar</span>
               </InfoEndereco>
               <Historico>
                 <h3>Histórico de pedidos</h3>
@@ -124,7 +124,7 @@ function TelaDePerfil() {
                           <Resteurante>{pedido.restaurantName}</Resteurante>
                           <Total>
                             SUBTOTAL R$
-                            {pedido.totalPrice.toFixed(2).replace('.', ',')}
+                            {pedido.totalPrice.toFixed(2).replace(".", ",")}
                           </Total>
                         </li>
                       );
@@ -134,7 +134,7 @@ function TelaDePerfil() {
               </Historico>
             </>
           )}
-          {trocarTela === 'editar' && (
+          {trocarTela === "editar" && (
             <Editar
               onClickMudar={onClickMudar}
               dados={dados}
@@ -144,7 +144,7 @@ function TelaDePerfil() {
               iconeVoltar={iconeVoltar}
             />
           )}
-          {trocarTela === 'endereco' && (
+          {trocarTela === "endereco" && (
             <EditarEndereco
               onClickMudar={onClickMudar}
               endereco={endereco}

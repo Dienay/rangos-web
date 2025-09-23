@@ -1,4 +1,5 @@
 # Rangos ... Aplicação recebendo atualizações: Novo nome, funcionalidades e identidade visual
+
 <br>
 
 [Rangos](https://rangos.surge.sh/)
@@ -30,23 +31,27 @@ Criar uma plataforma de delivery online, Rappi4A.
 ## Como rodar a aplicação
 
 No terminal, clone o projeto:
+
 ```
-git clone 
+git clone
 ```
 
 Entre na pasta do projeto:
+
 ```
 cd /Rappi-frontend
 ```
 
 Instale as dependências:
+
 ```
 npm install
 ```
 
 Execute a aplicação:
+
 ```
-npm start 
+npm start
 ```
 
 <br>
@@ -61,7 +66,8 @@ Copyright :copyright: 2020 - Rappi4A
 
 ## Canais de comunicação
 
-**Dienay Lima**: *Desenvolvedor web Frontend
+**Dienay Lima**: \*Desenvolvedor web Frontend
+
 - [Linkedin](https://www.linkedin.com/in/dienaylima/)
 - [Portfólio](http://dienaylima.com/)
 - [Email](dienaylima@gmail.com)

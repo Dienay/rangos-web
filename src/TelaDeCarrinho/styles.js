@@ -1,8 +1,5 @@
-import styled from 'styled-components';
-import {
-  CardRestaurante,
-  EstablishmentInfo,
-} from '../TelaListaDeRestaurantes/styles';
+import styled from "styled-components";
+import { EstablishmentInfo } from "../TelaListaDeRestaurantes/styles";
 
 export const Cart = styled.div`
   display: flex;
