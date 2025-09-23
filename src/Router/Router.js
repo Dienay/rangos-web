@@ -1,12 +1,11 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import TelaInicial from '../TelaInicial';
-import LoginPage from '../LoginPage';
-import SignUp from '../SignUpPage';
-import HomePage from '../HomePage';
-import TelaListaDeRestaurantes from '../TelaListaDeRestaurantes';
-import TelaDeCarrinho from '../TelaDeCarrinho';
-import TelaDePerfil from '../TelaDePerfil';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LoginPage from "../LoginPage";
+import SignUp from "../SignUpPage";
+import HomePage from "../HomePage";
+import TelaListaDeRestaurantes from "../TelaListaDeRestaurantes";
+import TelaDeCarrinho from "../TelaDeCarrinho";
+import TelaDePerfil from "../TelaDePerfil";
 
 // import { Container } from './styles'
 

@@ -1,11 +1,11 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from "styled-components";
 import {
   backgroundColor,
   border,
   color,
   fontSize,
   fontWeight,
-} from '../../styles/styleUtils';
+} from "../../styles/styleUtils";
 
 const slideDown = keyframes`
   from {
@@ -32,24 +32,24 @@ const slideUp = keyframes`
 export const DropdownContainer = styled.section`
   position: relative;
   cursor: pointer;
-  ${color('text')}
+  ${color("text")}
 `;
 
 export const DropdownButton = styled.button`
-  ${backgroundColor('transparent')}
-  ${color('text')}
-  ${fontSize('body')}
-  ${fontWeight('bold')}
+  ${backgroundColor("transparent")}
+  ${color("text")}
+  ${fontSize("body")}
+  ${fontWeight("bold")}
   cursor: pointer;
 
   &:hover {
-    ${color('primary')}
+    ${color("primary")}
   }
 `;
 
 export const DropdownContent = styled.ul`
-  ${backgroundColor('white')}
-  ${border('thin', 'textGrey')}
+  ${backgroundColor("white")}
+  ${border("thin", "textGrey")}
   position: absolute;
   border-radius: 4px;
   right: 0;
@@ -57,7 +57,7 @@ export const DropdownContent = styled.ul`
   top: 30px;
   min-width: max-content;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+  display: ${({ isOpen }) => (isOpen ? "block" : "none")};
   animation: ${({ isOpen }) => (isOpen ? slideDown : slideUp)} 0.5s forwards;
   z-index: 1;
 `;

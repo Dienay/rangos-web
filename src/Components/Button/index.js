@@ -1,13 +1,13 @@
-import React from 'react';
-import { Btn } from './styles';
-import PropTypes from 'prop-types';
+import React from "react";
+import { Btn } from "./styles";
+import PropTypes from "prop-types";
 
 function Button({
   children,
-  type = 'button',
+  type = "button",
   onClick = () => {},
   disabled = false,
-  $variant = 'flat',
+  $variant = "flat",
 }) {
   return (
     <Btn type={type} onClick={onClick} disabled={disabled} $variant={$variant}>
@@ -19,7 +19,7 @@ function Button({
 Button.propTypes = {
   children: PropTypes.node.isRequired,
   onClick: PropTypes.func,
-  type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  type: PropTypes.oneOf(["button", "submit", "reset"]),
   disabled: PropTypes.bool,
 };
 

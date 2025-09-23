@@ -4,13 +4,13 @@ import React, {
   useContext,
   useCallback,
   useMemo,
-} from 'react';
-import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
-import useProtectedRoute from '../Hooks/useProtectedRoute';
+} from "react";
+import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
+import useProtectedRoute from "../Hooks/useProtectedRoute";
 
-import Loading from '../Components/Loading/index';
-import CarrinhoContext from '../Contexts/CarrinhoContext';
+import Loading from "../Components/Loading/index";
+import CarrinhoContext from "../Contexts/CarrinhoContext";
 
 import {
   Container,
@@ -33,11 +33,11 @@ import {
   BoxBtn,
   ProductList,
   EstablishmentLogo,
-} from './styles';
+} from "./styles";
 
-import iconeVoltar from '../Images/back.svg';
-import { API_URL } from '../config';
-import Header from '../Components/Header';
+import iconeVoltar from "../Images/back.svg";
+import { API_URL } from "../config";
+import Header from "../Components/Header";
 
 function TelaListaDeRestaurantes() {
   const navigate = useNavigate();
@@ -133,7 +133,7 @@ function TelaListaDeRestaurantes() {
 
   return (
     <>
-      {!establishment || establishment === '' ? (
+      {!establishment || establishment === "" ? (
         <Loading />
       ) : (
         <>
@@ -173,6 +173,7 @@ function TelaListaDeRestaurantes() {
 
             {establishment && products && (
               <ProductList>
+                <>{products.length}</>
                 {products.map((produto) => {
                   return (
                     <CardProduto key={produto.id}>
@@ -181,7 +182,7 @@ function TelaListaDeRestaurantes() {
                         <CardNome>{produto.name}</CardNome>
                         <CardDescription>{produto.description}</CardDescription>
                         <CardPrice>
-                          R${produto.price.toFixed(2).replace('.', ',')}
+                          R${produto.price.toFixed(2).replace(".", ",")}
                         </CardPrice>
                       </CardTexto>
 

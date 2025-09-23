@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { backgroundColor, color, fontSize } from '../../styles/styleUtils';
+import styled from "styled-components";
+import { backgroundColor, color, fontSize } from "../../styles/styleUtils";
 
 export const HeaderContainer = styled.div`
   padding: 8px 32px;
@@ -10,7 +10,7 @@ export const HeaderContainer = styled.div`
 `;
 
 export const LogoButton = styled.button`
-  ${backgroundColor('transparent')}
+  ${backgroundColor("transparent")}
   cursor: pointer;
 `;
 
@@ -22,8 +22,8 @@ export const UserUtilities = styled.section`
 
 export const SingUpLink = styled.a`
   font-weight: 600;
-  ${color('text')}
-  ${fontSize('body')};
+  ${color("text")}
+  ${fontSize("body")};
   cursor: pointer;
 `;
 
@@ -42,11 +42,11 @@ export const CartButton = styled.button`
 
 export const CartCounter = styled.span`
   position: absolute;
-  ${fontSize('label')};
+  ${fontSize("label")};
   top: -8px;
   right: -8px;
   min-width: 24px;
   padding: 2px 4px;
   border-radius: 25%;
-  ${backgroundColor('primary')}
+  ${backgroundColor("primary")}
 `;

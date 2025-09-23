@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import { css } from "styled-components";
 
 export const fontSize = (size) => css`
   font-size: ${({ theme }) => theme.fontSize[size]};

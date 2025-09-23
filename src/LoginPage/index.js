@@ -1,28 +1,28 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-import { LoginContainer, Text, Link, LoginForm } from './styles';
+import { LoginContainer, Text, Link, LoginForm } from "./styles";
 
-import useInput from '../Hooks/useInput';
-import InputField from '../Components/InputField';
-import Button from '../Components/Button';
-import Logo from '../Components/Logo';
-import { API_URL } from '../config';
+import useInput from "../Hooks/useInput";
+import InputField from "../Components/InputField";
+import Button from "../Components/Button";
+import Logo from "../Components/Logo";
+import { API_URL } from "../config";
 
 const baseUrl = API_URL;
 
 function LoginPage() {
   const navigate = useNavigate();
   const { form, onChange, resetInput } = useInput({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
   const [inputError, setInputError] = useState({
     email: false,
-    emailMessage: '',
+    emailMessage: "",
     password: false,
-    passwordMessage: '',
+    passwordMessage: "",
   });
 
   const handleInputChange = (event) => {
@@ -33,7 +33,7 @@ function LoginPage() {
     setInputError((prevErrors) => ({
       ...prevErrors,
       [`${name}`]: false,
-      [`${name}Message`]: '',
+      [`${name}Message`]: "",
     }));
   };
 
@@ -46,35 +46,35 @@ function LoginPage() {
     axios
       .post(`${baseUrl}/login`, body)
       .then((response) => {
-        console.log('Login response:', response.data);
+        console.log("Login response:", response.data);
 
-        window.localStorage.setItem('token', response.data.token);
+        window.localStorage.setItem("token", response.data.token);
         if (response.data.token) {
           resetInput();
-          navigate('/home');
+          navigate("/home");
         } else {
-          navigate('/cadastro');
+          navigate("/cadastro");
         }
       })
       .catch((err) => {
-        console.log('Erro:', err.message);
+        console.log("Erro:", err.message);
 
         if (err.response) {
           // Somente tente acessar err.response.status se err.response estiver definido
           if (err.response.status === 404) {
             setInputError({
               email: true,
-              emailMessage: 'E-mail inválido',
+              emailMessage: "E-mail inválido",
             });
           } else if (err.response.status === 422) {
             setInputError({
               password: true,
-              passwordMessage: 'Senha inválida',
+              passwordMessage: "Senha inválida",
             });
           }
         } else {
           // Lide com outros tipos de erros aqui
-          console.log('Erro desconhecido', err);
+          console.log("Erro desconhecido", err);
         }
       });
   };
@@ -112,7 +112,7 @@ function LoginPage() {
           Não possui cadastro?
           <Link
             onClick={() => {
-              navigate('/cadastro');
+              navigate("/cadastro");
             }}
           >
             Clique aqui

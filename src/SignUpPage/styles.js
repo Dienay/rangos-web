@@ -1,5 +1,5 @@
-import styled, { keyframes } from 'styled-components';
-import { fontSize } from '../styles/styleUtils';
+import styled, { keyframes } from "styled-components";
+import { fontSize } from "../styles/styleUtils";
 
 const fade = keyframes`
 from{
@@ -22,7 +22,7 @@ export const SignUpContainer = styled.section`
 `;
 
 export const Title = styled.h3`
-  ${fontSize('h1')};
+  ${fontSize("h1")};
   font-weight: 300;
   margin: 24px 0;
 `;

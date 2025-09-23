@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   CardContainer,
   EstablishmentLogo,
@@ -8,19 +8,19 @@ import {
   EstablishmentCategory,
   CardInfoShipping,
   CardInfoOpening,
-} from './styles';
-import Logo from '../../Images/logo-rangos.svg';
+} from "./styles";
+import Logo from "../../Images/logo-rangos.svg";
 
 const CardEstablishment = ({ establishment, onClick }) => {
   const isEstablishmentOpen = (openingHours) => {
     const days = [
-      'Sunday',
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
     ];
 
     const currentDate = new Date();
@@ -30,11 +30,11 @@ const CardEstablishment = ({ establishment, onClick }) => {
     for (const hourRange of openingHours) {
       if (
         hourRange.openDays.includes(days[currentDay]) ||
-        hourRange.openDays.includes('Every day')
+        hourRange.openDays.includes("Every day")
       ) {
         for (const hour of hourRange.hours) {
-          const [openHour, openMinute] = hour.open.split(':').map(Number);
-          const [closeHour, closeMinute] = hour.close.split(':').map(Number);
+          const [openHour, openMinute] = hour.open.split(":").map(Number);
+          const [closeHour, closeMinute] = hour.close.split(":").map(Number);
 
           const openTime = openHour * 60 + openMinute;
           const closeTime = closeHour * 60 + closeMinute;
@@ -78,7 +78,7 @@ const CardEstablishment = ({ establishment, onClick }) => {
             {establishment.deliveryTime} min -
             {establishment.shipping
               ? ` R$${establishment.shipping},00`
-              : ' grátis'}
+              : " grátis"}
           </CardInfoShipping>
         </CardInfo>
       </CardContent>

@@ -4,7 +4,7 @@ import React, {
   useContext,
   useMemo,
   useCallback,
-} from 'react';
+} from "react";
 import {
   Cart,
   Bar,
@@ -24,7 +24,7 @@ import {
   LabelRadio,
   Container,
   DadosRestaurante,
-} from './styles';
+} from "./styles";
 import {
   CardProduto,
   CardImagem,
@@ -36,20 +36,20 @@ import {
   BtnRemoveQuantidade,
   CardInfo,
   CardTextoDelivery,
-} from '../TelaListaDeRestaurantes/styles';
-import axios from 'axios';
-import CarrinhoContext from '../Contexts/CarrinhoContext';
-import useProtectedRoute from '../Hooks/useProtectedRoute';
-import { useNavigate } from 'react-router-dom';
+} from "../TelaListaDeRestaurantes/styles";
+import axios from "axios";
+import CarrinhoContext from "../Contexts/CarrinhoContext";
+import useProtectedRoute from "../Hooks/useProtectedRoute";
+import { useNavigate } from "react-router-dom";
 
 // const token = window.localStorage.getItem('token');
 
-const baseUrl = 'https://us-central1-missao-newton.cloudfunctions.net/rappi4A';
+const baseUrl = "https://us-central1-missao-newton.cloudfunctions.net/rappi4A";
 
 function TelaDeCarrinho() {
   const navigate = useNavigate();
   const token = useProtectedRoute();
-  const [metodoPagamento, setMetodoPagamento] = useState('');
+  const [metodoPagamento, setMetodoPagamento] = useState("");
   const [address, setAddress] = useState({});
   const [cor, setCor] = useState(false);
   const [enderecoRestaurante, setEnderecoRestaurante] = useState({});
@@ -106,7 +106,7 @@ function TelaDeCarrinho() {
       products: arrayPlaceOrder,
       paymentMethod: metodoPagamento,
     };
-    if (metodoPagamento !== '' && carrinhoContext.carrinho.length !== 0) {
+    if (metodoPagamento !== "" && carrinhoContext.carrinho.length !== 0) {
       axios
         .post(
           `${baseUrl}/restaurants/${carrinhoContext.carrinho[0].restauranteId}/order`,
@@ -114,12 +114,12 @@ function TelaDeCarrinho() {
           axiosConfig,
         )
         .then(() => {
-          alert('Pedido enviado!');
+          alert("Pedido enviado!");
           limpaCarrinho();
         })
         .catch((err) => {
           console.log(err.message);
-          alert('Já existe um pedido em andamento.');
+          alert("Já existe um pedido em andamento.");
           limpaCarrinho();
         });
     }
@@ -130,25 +130,25 @@ function TelaDeCarrinho() {
   };
 
   const mudaCorBotao = useCallback(() => {
-    if (metodoPagamento !== '' && carrinhoContext.carrinho.length !== 0) {
+    if (metodoPagamento !== "" && carrinhoContext.carrinho.length !== 0) {
       setCor(!cor);
     }
   }, [carrinhoContext.carrinho.length, cor, metodoPagamento]);
 
   const removerProduto = (produtoId) => {
     carrinhoContext.dispatch({
-      type: 'REMOVE_PRODUTO_CARRINHO',
+      type: "REMOVE_PRODUTO_CARRINHO",
       produtoId: produtoId,
     });
   };
 
   const limpaCarrinho = () => {
-    carrinhoContext.dispatch({ type: 'LIMPA_CARRINHO' });
+    carrinhoContext.dispatch({ type: "LIMPA_CARRINHO" });
   };
 
   useEffect(() => {
     if (token === null) {
-      navigate('/login');
+      navigate("/login");
     }
 
     carrinhoContext.carrinho.length !== 0 && getRestaurantDetail();
@@ -171,7 +171,7 @@ function TelaDeCarrinho() {
         <CardTexto>
           <CardNome>{item.name}</CardNome>
           <CardDescription>{item.description}</CardDescription>
-          <CardPrice>R${item.price.toFixed(2).replace('.', ',')}</CardPrice>
+          <CardPrice>R${item.price.toFixed(2).replace(".", ",")}</CardPrice>
         </CardTexto>
 
         {carrinhoContext.carrinho.map((produtoCarrinho) => {
@@ -192,7 +192,7 @@ function TelaDeCarrinho() {
             remover
           </BtnRemoveQuantidade>
         ) : (
-          ''
+          ""
         )}
       </CardProduto>
     );
@@ -227,10 +227,10 @@ function TelaDeCarrinho() {
           <TitleCart>Carrinho vazio</TitleCart>
         )}
         <ValorFrete>
-          Frete R${' '}
+          Frete R${" "}
           {carrinhoContext.carrinho.length !== 0
-            ? enderecoRestaurante.shipping + '.00'
-            : '0.00'}
+            ? enderecoRestaurante.shipping + ".00"
+            : "0.00"}
         </ValorFrete>
         <ValorCart>
           <Subtotal>SUBTOTAL</Subtotal>
@@ -245,7 +245,7 @@ function TelaDeCarrinho() {
               value="money"
               onChange={pegaMetodoPagamento}
               required
-            />{' '}
+            />{" "}
             Dinheiro
           </LabelRadio>
           <LabelRadio>
@@ -255,10 +255,10 @@ function TelaDeCarrinho() {
               value="creditcard"
               onChange={pegaMetodoPagamento}
               required
-            />{' '}
+            />{" "}
             Cartão de crédito
           </LabelRadio>
-          <ButtonConfirmCart cor={cor ? '#e86e5a' : 'rgba(232, 110, 90, 0.5)'}>
+          <ButtonConfirmCart cor={cor ? "#e86e5a" : "rgba(232, 110, 90, 0.5)"}>
             Confirmar
           </ButtonConfirmCart>
         </OptionsPayMethod>

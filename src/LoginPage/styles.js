@@ -1,5 +1,5 @@
-import styled, { keyframes } from 'styled-components';
-import { backgroundColor, fontSize } from '../styles/styleUtils';
+import styled, { keyframes } from "styled-components";
+import { fontSize } from "../styles/styleUtils";
 
 const fade = keyframes`
 from{
@@ -27,14 +27,14 @@ export const LoginForm = styled.form`
 `;
 
 export const Text = styled.p`
-  ${fontSize('body')};
+  ${fontSize("body")};
   margin-top: 24px;
 `;
 
 export const Link = styled.a`
   display: inline-block;
   margin-left: 4px;
-  ${fontSize('body')};
+  ${fontSize("body")};
   text-decoration: underline;
   cursor: pointer;
 `;

@@ -1,11 +1,11 @@
-import React from 'react';
-import { ContainerCriarEndereco } from './styles';
-import { Header } from '../../TelaDePerfil/styles';
-import { useNavigate } from 'react-router-dom';
-import { Form } from '../Editar/styles';
-import axios from 'axios';
-import useInput from '../../Hooks/useInput';
-import useProtectedRoute from '../../Hooks/useProtectedRoute';
+import React from "react";
+import { ContainerCriarEndereco } from "./styles";
+import { Header } from "../../TelaDePerfil/styles";
+import { useNavigate } from "react-router-dom";
+import { Form } from "../Editar/styles";
+import axios from "axios";
+import useInput from "../../Hooks/useInput";
+import useProtectedRoute from "../../Hooks/useProtectedRoute";
 
 function CriarEndereco(props) {
   const token = useProtectedRoute();
@@ -17,12 +17,12 @@ function CriarEndereco(props) {
   };
 
   const { form, onChange } = useInput({
-    street: '',
-    number: '',
-    complement: '',
-    neighbourhood: '',
-    city: '',
-    state: '',
+    street: "",
+    number: "",
+    complement: "",
+    neighbourhood: "",
+    city: "",
+    state: "",
   });
 
   const navigate = useNavigate();
@@ -48,8 +48,8 @@ function CriarEndereco(props) {
       .put(`${props.baseUrl}/address`, body, axiosConfig)
       .then((response) => {
         console.log(response.data);
-        alert('Endereço salvo com sucesso');
-        navigate('/login');
+        alert("Endereço salvo com sucesso");
+        navigate("/login");
       })
       .catch((err) => {
         console.log(err.message);
@@ -66,7 +66,7 @@ function CriarEndereco(props) {
         <div>
           <label>Logradouro*</label>
           <input
-            placeholder={'Rua/Av'}
+            placeholder={"Rua/Av"}
             name="street"
             onChange={handleInputChange}
             required
@@ -77,7 +77,7 @@ function CriarEndereco(props) {
         <div>
           <label>Número*</label>
           <input
-            placeholder={'Número'}
+            placeholder={"Número"}
             name="number"
             onChange={handleInputChange}
             required
@@ -88,7 +88,7 @@ function CriarEndereco(props) {
         <div>
           <label>Complemento</label>
           <input
-            placeholder={'Apto/Bloco'}
+            placeholder={"Apto/Bloco"}
             name="complement"
             onChange={handleInputChange}
             type="text"
@@ -98,7 +98,7 @@ function CriarEndereco(props) {
         <div>
           <label>Bairro*</label>
           <input
-            placeholder={'Bairro'}
+            placeholder={"Bairro"}
             name="neighbourhood"
             onChange={handleInputChange}
             required
@@ -109,7 +109,7 @@ function CriarEndereco(props) {
         <div>
           <label>Cidade*</label>
           <input
-            placeholder={'Cidade'}
+            placeholder={"Cidade"}
             name="city"
             onChange={handleInputChange}
             required
@@ -120,7 +120,7 @@ function CriarEndereco(props) {
         <div>
           <label>Estado*</label>
           <input
-            placeholder={'Estado'}
+            placeholder={"Estado"}
             name="state"
             onChange={handleInputChange}
             required

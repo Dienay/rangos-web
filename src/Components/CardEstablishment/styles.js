@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { color, fontSize } from '../../styles/styleUtils';
+import styled from "styled-components";
+import { color, fontSize } from "../../styles/styleUtils";
 
 export const CardContainer = styled.section`
   width: 320px;
@@ -26,13 +26,13 @@ export const CardContent = styled.section`
 `;
 
 export const EstablishmentNome = styled.p`
-  ${color('text')}
-  ${fontSize('body')}
+  ${color("text")}
+  ${fontSize("body")}
 `;
 
 export const EstablishmentCategory = styled.span`
-  ${color('textGrey')}
-  ${fontSize('label')}
+  ${color("textGrey")}
+  ${fontSize("label")}
 `;
 
 export const CardInfo = styled.div`
@@ -41,20 +41,20 @@ export const CardInfo = styled.div`
 `;
 
 export const CardInfoOpening = styled.p`
-  ${color('textGrey')}
-  ${fontSize('label')}
+  ${color("textGrey")}
+  ${fontSize("label")}
 
   .opened {
     color: #24a724;
   }
 
   .closed {
-    ${color('textGrey')}
+    ${color("textGrey")}
     opacity: 0.7;
   }
 `;
 
 export const CardInfoShipping = styled.p`
-  ${color('textGrey')}
-  ${fontSize('label')}
+  ${color("textGrey")}
+  ${fontSize("label")}
 `;

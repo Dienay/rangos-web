@@ -1,8 +1,8 @@
-import React from 'react';
-import { LogoStyle } from './style';
-import LogoImage from '../../Images/logo-rangos.svg';
+import React from "react";
+import { LogoStyle } from "./style";
+import LogoImage from "../../Images/logo-rangos.svg";
 
-function Logo({ $variant = 'normal' }) {
+function Logo({ $variant = "normal" }) {
   return <LogoStyle src={LogoImage} alt="Logo Rappi4" $variant={$variant} />;
 }
 

@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   DropdownButton,
   DropdownContainer,
   DropdownContent,
   DropdownItem,
-} from './styles';
+} from "./styles";
 
 function Dropdown({ setIsLoggedIn }) {
   const navigate = useNavigate();
@@ -27,18 +27,18 @@ function Dropdown({ setIsLoggedIn }) {
   };
 
   const logout = () => {
-    window.localStorage.removeItem('token');
+    window.localStorage.removeItem("token");
     setIsLoggedIn(false);
   };
 
   useEffect(() => {
     if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
     } else {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     }
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen]);
 
@@ -46,10 +46,10 @@ function Dropdown({ setIsLoggedIn }) {
     <DropdownContainer ref={dropdownRef}>
       <DropdownButton onClick={toggleDropdown}>Menu</DropdownButton>
       <DropdownContent isOpen={isOpen}>
-        <DropdownItem href="#option1" onClick={() => onClickMenu('/login')}>
+        <DropdownItem href="#option1" onClick={() => onClickMenu("/login")}>
           Option 1
         </DropdownItem>
-        <DropdownItem href="#option2" onClick={() => onClickMenu('/cadastro')}>
+        <DropdownItem href="#option2" onClick={() => onClickMenu("/cadastro")}>
           Option 2
         </DropdownItem>
         <DropdownItem onClick={logout} href="#option3">

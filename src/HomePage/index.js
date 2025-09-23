@@ -1,13 +1,13 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import Loading from '../Components/Loading';
+import React, { useEffect, useState, useCallback } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Loading from "../Components/Loading";
 
-import { Container, SearchInput, EstablishmentList, Feed } from './styles';
+import { Container, SearchInput, EstablishmentList, Feed } from "./styles";
 
-import Header from '../Components/Header';
-import CardEstablishment from '../Components/CardEstablishment';
-import { API_URL } from '../config';
+import Header from "../Components/Header";
+import CardEstablishment from "../Components/CardEstablishment";
+import { API_URL } from "../config";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const HomePage = () => {
   const baseUrl = API_URL;
 
   const [establishmentList, setEstablishmentList] = useState([]);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
 
   const getEstablishments = useCallback(async () => {
     try {

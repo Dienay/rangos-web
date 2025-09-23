@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   CartButton,
   CartCounter,
@@ -6,18 +6,18 @@ import {
   LogoButton,
   SingUpLink,
   UserUtilities,
-} from './styles';
-import Logo from '../Logo';
-import { useNavigate } from 'react-router-dom';
-import Cart from '../../Images/icons/cart.svg';
-import Dropdown from '../Dropdown';
+} from "./styles";
+import Logo from "../Logo";
+import { useNavigate } from "react-router-dom";
+import Cart from "../../Images/icons/cart.svg";
+import Dropdown from "../Dropdown";
 
 function Header({ orderLength = 0 }) {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [cartCounter, setCartCounter] = useState(0);
 
-  const token = window.localStorage.getItem('token');
+  const token = window.localStorage.getItem("token");
 
   useEffect(() => {
     if (token === null) {
@@ -30,14 +30,14 @@ function Header({ orderLength = 0 }) {
 
   return (
     <HeaderContainer>
-      <LogoButton onClick={() => navigate('/home')}>
+      <LogoButton onClick={() => navigate("/home")}>
         <Logo $variant="small" />
       </LogoButton>
       <UserUtilities>
         {isLoggedIn ? (
           <Dropdown setIsLoggedIn={setIsLoggedIn} />
         ) : (
-          <SingUpLink onClick={() => navigate('/login')}>Entrar</SingUpLink>
+          <SingUpLink onClick={() => navigate("/login")}>Entrar</SingUpLink>
         )}
 
         <CartButton>

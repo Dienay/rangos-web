@@ -1,36 +1,36 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { SignUpContainer, SignUpForm, Title, UserType } from './styles';
-import useInput from '../Hooks/useInput';
-import Logo from '../Components/Logo';
-import InputField from '../Components/InputField';
-import Button from '../Components/Button';
-import { API_URL } from '../config';
+import React, { useCallback, useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { SignUpContainer, SignUpForm, UserType } from "./styles";
+import useInput from "../Hooks/useInput";
+import Logo from "../Components/Logo";
+import InputField from "../Components/InputField";
+import Button from "../Components/Button";
+import { API_URL } from "../config";
 
 const baseUrl = API_URL;
 
 function SignUp() {
   const navigate = useNavigate();
-  const [userType, setUserType] = useState('Customer');
+  const [userType, setUserType] = useState("Customer");
   const [customerButton, setCustomerButton] = useState(true);
   const [establishmentButton, setEstablishmentButton] = useState(false);
   const { form, onChange } = useInput({
-    name: '',
-    email: '',
-    phone: '',
-    password: '',
-    confirmPassword: '',
-    typeUser: '',
+    name: "",
+    email: "",
+    phone: "",
+    password: "",
+    confirmPassword: "",
+    typeUser: "",
   });
 
   const [inputError, setInputError] = useState({
     confirmPassword: false,
-    confirmPasswordMessage: '',
+    confirmPasswordMessage: "",
     email: false,
-    emailMessage: '',
+    emailMessage: "",
     phone: false,
-    phoneMessage: '',
+    phoneMessage: "",
   });
 
   const handleInputChange = (event) => {
@@ -41,7 +41,7 @@ function SignUp() {
     setInputError((prevErrors) => ({
       ...prevErrors,
       [`${name}`]: false,
-      [`${name}Message`]: '',
+      [`${name}Message`]: "",
     }));
   };
 
@@ -58,7 +58,7 @@ function SignUp() {
     if (form.password !== form.confirmPassword) {
       setInputError({
         confirmPassword: true,
-        confirmPasswordMessage: 'As senhas não coincidem',
+        confirmPasswordMessage: "As senhas não coincidem",
       });
       return;
     }
@@ -66,22 +66,22 @@ function SignUp() {
     axios
       .post(`${baseUrl}/signup`, body)
       .then((response) => {
-        window.localStorage.setItem('token', response.data.token);
+        window.localStorage.setItem("token", response.data.token);
 
         if (response.data.token) {
-          navigate('/home');
+          navigate("/home");
         }
       })
       .catch((e) => {
-        if (e.response.data.message.includes('Phone')) {
+        if (e.response.data.message.includes("Phone")) {
           setInputError({
             phone: true,
-            phoneMessage: 'Este número já está sendo usado por alguém',
+            phoneMessage: "Este número já está sendo usado por alguém",
           });
-        } else if (e.response.data.message.includes('Email')) {
+        } else if (e.response.data.message.includes("Email")) {
           setInputError({
             email: true,
-            emailMessage: 'Este email já está sendo usado por alguém',
+            emailMessage: "Este email já está sendo usado por alguém",
           });
         }
       });
@@ -92,10 +92,10 @@ function SignUp() {
   };
 
   const handleButtonUserType = useCallback(() => {
-    if (userType === 'Customer') {
+    if (userType === "Customer") {
       setCustomerButton(true);
       setEstablishmentButton(false);
-    } else if (userType === 'Establishment') {
+    } else if (userType === "Establishment") {
       setCustomerButton(false);
       setEstablishmentButton(true);
     }
@@ -112,17 +112,17 @@ function SignUp() {
         <UserType>
           <Button
             onClick={() => {
-              handleUserType('Customer');
+              handleUserType("Customer");
             }}
-            $variant={customerButton ? 'flat' : 'outline'}
+            $variant={customerButton ? "flat" : "outline"}
           >
             Cliente
           </Button>
           <Button
             onClick={() => {
-              handleUserType('Establishment');
+              handleUserType("Establishment");
             }}
-            $variant={establishmentButton ? 'flat' : 'outline'}
+            $variant={establishmentButton ? "flat" : "outline"}
           >
             Estabelecimento
           </Button>
@@ -183,7 +183,7 @@ function SignUp() {
           <Button type="submit">Cadastrar</Button>
           <Button
             onClick={() => {
-              navigate('/login');
+              navigate("/login");
             }}
             $variant="outline"
           >
