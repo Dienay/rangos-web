@@ -1,31 +1,29 @@
-import React, { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Loading from "../../components/Loading";
 
 import { Container, SearchInput, EstablishmentList, Feed } from "./styles";
 
-import Header from "../../components/Header";
-import CardEstablishment from "../../components/CardEstablishment";
-import { API_URL } from "../../config";
+import { Loading, Header, CardEstablishment } from "../../components";
+import { env } from "../../utils";
 
 const HomePage = () => {
   const navigate = useNavigate();
 
-  const baseUrl = API_URL;
+  const { API_URL } = env;
 
   const [establishmentList, setEstablishmentList] = useState([]);
   const [search, setSearch] = useState("");
 
   const getEstablishments = useCallback(async () => {
     try {
-      const response = await axios.get(`${baseUrl}/establishments`);
+      const response = await axios.get(`${API_URL}/establishments`);
 
       setEstablishmentList(response.data.establishments);
     } catch (err) {
       console.log(err);
     }
-  }, [baseUrl]);
+  }, [API_URL]);
 
   const openEstablishment = (id) => {
     navigate(`/establishment/${id}`);

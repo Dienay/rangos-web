@@ -38,8 +38,8 @@ import {
   CardTextoDelivery,
 } from "../Establishments/styles";
 import axios from "axios";
-import CarrinhoContext from "../../contexts/CarrinhoContext";
-import useProtectedRoute from "../../hooks/useProtectedRoute";
+import { CarrinhoContext } from "../../contexts";
+import { useProtectedRoute } from "../../hooks";
 import { useNavigate } from "react-router-dom";
 
 // const token = window.localStorage.getItem('token');

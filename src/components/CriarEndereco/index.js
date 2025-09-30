@@ -1,11 +1,9 @@
-import React from "react";
 import { ContainerCriarEndereco } from "./styles";
-import { Header } from "../../TelaDePerfil/styles";
+import { Header } from "../../pages/Profile/styles";
 import { useNavigate } from "react-router-dom";
 import { Form } from "../Editar/styles";
 import axios from "axios";
-import useInput from "../../hooks/useInput";
-import useProtectedRoute from "../../hooks/useProtectedRoute";
+import { useInput, useProtectedRoute } from "../../hooks";
 
 function CriarEndereco(props) {
   const token = useProtectedRoute();
