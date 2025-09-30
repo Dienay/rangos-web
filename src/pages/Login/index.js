@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import { LoginContainer, Text, Link, LoginForm } from "./styles";
 
-import useInput from "../../hooks/useInput";
-import InputField from "../../components/InputField";
-import Button from "../../components/Button";
-import Logo from "../../components/Logo";
-import { API_URL } from "../../config";
+import { useInput } from "../../hooks";
+import { InputField, Button, Logo } from "../../components";
+import { env } from "../../utils";
 
-const baseUrl = API_URL;
+const { API_URL } = env;
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -44,7 +42,7 @@ function LoginPage() {
       password: form.password,
     };
     axios
-      .post(`${baseUrl}/login`, body)
+      .post(`${API_URL}/login`, body)
       .then((response) => {
         console.log("Login response:", response.data);
 

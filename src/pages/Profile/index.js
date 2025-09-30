@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 
 import {
   ContainerPerfil,
@@ -10,12 +10,10 @@ import {
   Total,
 } from "./styles";
 
-import Editar from "../../components/Editar";
-import EditarEndereco from "../../components/EditarEndereco";
-import Loading from "../../components/Loading";
+import { Editar, EditarEndereco, Loading } from "../../components";
 import axios from "axios";
 
-import useProtectedRoute from "../../hooks/useProtectedRoute";
+import { useProtectedRoute } from "../../hooks";
 
 import iconeVoltar from "../../Images/back.svg";
 

@@ -1,14 +1,12 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { SignUpContainer, SignUpForm, UserType } from "./styles";
-import useInput from "../../hooks/useInput";
-import Logo from "../../components/Logo";
-import InputField from "../../components/InputField";
-import Button from "../../components/Button";
-import { API_URL } from "../../config";
+import { useInput } from "../../hooks";
+import { Logo, InputField, Button } from "../../components";
+import { env } from "../../utils";
 
-const baseUrl = API_URL;
+const { API_URL } = env;
 
 function SignUp() {
   const navigate = useNavigate();
@@ -64,7 +62,7 @@ function SignUp() {
     }
 
     axios
-      .post(`${baseUrl}/signup`, body)
+      .post(`${API_URL}/signup`, body)
       .then((response) => {
         window.localStorage.setItem("token", response.data.token);
 
