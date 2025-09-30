@@ -36,10 +36,10 @@ import {
   BtnRemoveQuantidade,
   CardInfo,
   CardTextoDelivery,
-} from "../TelaListaDeRestaurantes/styles";
+} from "../Establishments/styles";
 import axios from "axios";
-import CarrinhoContext from "../Contexts/CarrinhoContext";
-import useProtectedRoute from "../Hooks/useProtectedRoute";
+import CarrinhoContext from "../../contexts/CarrinhoContext";
+import useProtectedRoute from "../../hooks/useProtectedRoute";
 import { useNavigate } from "react-router-dom";
 
 // const token = window.localStorage.getItem('token');

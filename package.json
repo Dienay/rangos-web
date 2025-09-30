@@ -17,14 +17,19 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "eject": "react-scripts eject",
     "deploy": "npm run build && mv build/index.html build/200.html && surge build https://rangos.surge.sh",
-    "lint-check": "prettier --check .",
-    "lint-fix": "prettier --write ."
+    "lint:check": "prettier --check .",
+    "lint:fix": "prettier --write ."
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "devDependencies": {
+    "jest": "^30.1.3",
+    "prettier": "^3.6.2"
   },
   "browserslist": {
     "production": [
@@ -37,8 +42,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "prettier": "^3.6.2"
   }
 }

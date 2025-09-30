@@ -4,7 +4,7 @@ import "@testing-library/jest-dom/extend-expect";
 import axios from "axios";
 import { Router } from "react-router-dom";
 import { createMemorynavigate } from "navigate";
-import TelaDeCadastro from "./index";
+import TelaDeCadastro from "../SignUpPage/index";
 
 // axios.post = jest.fn().mockResolvedValue([{
 //     "name": "João Pedro",

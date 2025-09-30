@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import { fontSize } from "../styles/styleUtils";
+import { fontSize } from "../../styles/styleUtils";
 
 const fade = keyframes`
 from{

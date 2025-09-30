@@ -10,14 +10,14 @@ import {
   Total,
 } from "./styles";
 
-import Editar from "../Components/Editar";
-import EditarEndereco from "../Components/EditarEndereco";
-import Loading from "../Components/Loading";
+import Editar from "../../components/Editar";
+import EditarEndereco from "../../components/EditarEndereco";
+import Loading from "../../components/Loading";
 import axios from "axios";
 
-import useProtectedRoute from "../Hooks/useProtectedRoute";
+import useProtectedRoute from "../../hooks/useProtectedRoute";
 
-import iconeVoltar from "../Images/back.svg";
+import iconeVoltar from "../../Images/back.svg";
 
 function TelaDePerfil() {
   const baseUrl =

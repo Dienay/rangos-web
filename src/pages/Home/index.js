@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Loading from "../Components/Loading";
+import Loading from "../../components/Loading";
 
 import { Container, SearchInput, EstablishmentList, Feed } from "./styles";
 
-import Header from "../Components/Header";
-import CardEstablishment from "../Components/CardEstablishment";
-import { API_URL } from "../config";
+import Header from "../../components/Header";
+import CardEstablishment from "../../components/CardEstablishment";
+import { API_URL } from "../../config";
 
 const HomePage = () => {
   const navigate = useNavigate();

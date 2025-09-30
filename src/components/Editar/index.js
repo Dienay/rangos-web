@@ -1,8 +1,8 @@
 import React from "react";
 import { ContainerEditar, Form } from "./styles";
-import { Header } from "../../TelaDePerfil/styles";
+import { Header } from "../../pages/Profile/styles";
 import axios from "axios";
-import useForm from "../../Hooks/useForm";
+import useForm from "../../hooks/useForm";
 
 function Editar(props) {
   const { form, onChange } = useForm({

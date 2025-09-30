@@ -1,7 +1,7 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import TelaDePerfil from "./index";
+import TelaDePerfil from "../TelaDePerfil/index";
 import App from "../App";
 import axios from "axios";
 import { usenavigate } from "react-router-dom";

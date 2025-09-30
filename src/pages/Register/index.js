@@ -2,11 +2,11 @@ import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { SignUpContainer, SignUpForm, UserType } from "./styles";
-import useInput from "../Hooks/useInput";
-import Logo from "../Components/Logo";
-import InputField from "../Components/InputField";
-import Button from "../Components/Button";
-import { API_URL } from "../config";
+import useInput from "../../hooks/useInput";
+import Logo from "../../components/Logo";
+import InputField from "../../components/InputField";
+import Button from "../../components/Button";
+import { API_URL } from "../../config";
 
 const baseUrl = API_URL;
 

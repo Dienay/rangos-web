@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { border, color, fontSize } from "../styles/styleUtils";
+import { border, color, fontSize } from "../../styles/styleUtils";
 
 export const Container = styled.section`
   margin: 0 auto;

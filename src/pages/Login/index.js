@@ -4,11 +4,11 @@ import axios from "axios";
 
 import { LoginContainer, Text, Link, LoginForm } from "./styles";
 
-import useInput from "../Hooks/useInput";
-import InputField from "../Components/InputField";
-import Button from "../Components/Button";
-import Logo from "../Components/Logo";
-import { API_URL } from "../config";
+import useInput from "../../hooks/useInput";
+import InputField from "../../components/InputField";
+import Button from "../../components/Button";
+import Logo from "../../components/Logo";
+import { API_URL } from "../../config";
 
 const baseUrl = API_URL;
 

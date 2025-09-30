@@ -1,9 +1,9 @@
 import React from "react";
 import { render, wait } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import TelaHome from "./index";
-import CarrinhoContext from "../Contexts/CarrinhoContext";
-import FiltrosContext from "../Contexts/FiltrosContext";
+import TelaHome from "../HomePage/index";
+import CarrinhoContext from "../contexts/CarrinhoContext";
+import FiltrosContext from "../contexts/FiltrosContext";
 import axios from "axios";
 import { Router } from "react-router-dom";
 import { createMemorynavigate } from "navigate";

@@ -1,23 +1,34 @@
 import React from "react";
-import { ContainerEditarEndereco } from "./styles";
+import { ContainerCriarEndereco } from "./styles";
 import { Header } from "../../TelaDePerfil/styles";
+import { useNavigate } from "react-router-dom";
 import { Form } from "../Editar/styles";
 import axios from "axios";
-import useForm from "../../Hooks/useForm";
+import useInput from "../../hooks/useInput";
+import useProtectedRoute from "../../hooks/useProtectedRoute";
 
-function EditarEndereco(props) {
-  const { form, onChange } = useForm({
-    street: props.endereco.street,
-    number: props.endereco.number,
-    complement: props.endereco.complement,
-    neighbourhood: props.endereco.neighbourhood,
-    city: props.endereco.city,
-    state: props.endereco.state,
+function CriarEndereco(props) {
+  const token = useProtectedRoute();
+
+  const axiosConfig = {
+    headers: {
+      auth: token,
+    },
+  };
+
+  const { form, onChange } = useInput({
+    street: "",
+    number: "",
+    complement: "",
+    neighbourhood: "",
+    city: "",
+    state: "",
   });
+
+  const navigate = useNavigate();
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-
     onChange(name, value);
   };
 
@@ -31,12 +42,14 @@ function EditarEndereco(props) {
       city: form.city,
       state: form.state,
     };
-
+    console.log(body);
+    console.log(axiosConfig);
     axios
-      .put(`${props.baseUrl}/address`, body, props.axiosConfig)
+      .put(`${props.baseUrl}/address`, body, axiosConfig)
       .then((response) => {
         console.log(response.data);
         alert("Endereço salvo com sucesso");
+        navigate("/login");
       })
       .catch((err) => {
         console.log(err.message);
@@ -44,19 +57,16 @@ function EditarEndereco(props) {
   };
 
   return (
-    <ContainerEditarEndereco>
+    <ContainerCriarEndereco>
       <Header>
-        <img
-          src={props.iconeVoltar}
-          alt="voltar"
-          onClick={() => props.onClickMudar("perfil")}
-        />
+        {/* <span onClick={() => props.onClickMudar}>voltar</span> */}
         <h2>Endereço</h2>
       </Header>
       <Form onSubmit={editarEndereco}>
         <div>
           <label>Logradouro*</label>
           <input
+            placeholder={"Rua/Av"}
             name="street"
             onChange={handleInputChange}
             required
@@ -67,6 +77,7 @@ function EditarEndereco(props) {
         <div>
           <label>Número*</label>
           <input
+            placeholder={"Número"}
             name="number"
             onChange={handleInputChange}
             required
@@ -77,6 +88,7 @@ function EditarEndereco(props) {
         <div>
           <label>Complemento</label>
           <input
+            placeholder={"Apto/Bloco"}
             name="complement"
             onChange={handleInputChange}
             type="text"
@@ -86,6 +98,7 @@ function EditarEndereco(props) {
         <div>
           <label>Bairro*</label>
           <input
+            placeholder={"Bairro"}
             name="neighbourhood"
             onChange={handleInputChange}
             required
@@ -96,6 +109,7 @@ function EditarEndereco(props) {
         <div>
           <label>Cidade*</label>
           <input
+            placeholder={"Cidade"}
             name="city"
             onChange={handleInputChange}
             required
@@ -106,6 +120,7 @@ function EditarEndereco(props) {
         <div>
           <label>Estado*</label>
           <input
+            placeholder={"Estado"}
             name="state"
             onChange={handleInputChange}
             required
@@ -115,8 +130,8 @@ function EditarEndereco(props) {
         </div>
         <button>Salvar</button>
       </Form>
-    </ContainerEditarEndereco>
+    </ContainerCriarEndereco>
   );
 }
 
-export default EditarEndereco;
+export default CriarEndereco;
