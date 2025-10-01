@@ -1,35 +1,30 @@
 import styled, { css } from "styled-components";
-import {
-  backgroundColor,
-  border,
-  color,
-  fontSize,
-} from "../../styles/styleUtils";
 
 const flat = css`
   border: none;
 `;
 
 const outline = css`
-  ${border("thin", "primary")}
-  ${color("primary")};
+  border: ${({ theme }) => `${theme.borders.thin} ${theme.colors.primary}`};
+  color: ${({ theme }) => theme.colors.primary};
   background-color: transparent;
 `;
 
 const rounded = css`
-  border-radius: 50px;
+  border-radius: ${({ theme }) => theme.radius.full};
 `;
 
 export const Btn = styled.button`
-  ${backgroundColor("primary")};
-  ${color("white")};
-  ${fontSize("body")};
-  border-radius: 4px;
+  background-color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.white};
+  font-size: ${({ theme }) => theme.font.size.base};
+  border-radius: ${({ theme }) => theme.radius.small};
   cursor: pointer;
   display: inline-block;
-  padding: 16px;
+  padding: ${({ theme }) => theme.spacing(4)};
   text-align: center;
   width: 100%;
+  transition: all 0.2s ease-in-out;
 
   ${({ $variant }) => {
     switch ($variant) {
@@ -47,5 +42,9 @@ export const Btn = styled.button`
   &:disabled {
     background-color: lightgray;
     cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    opacity: 0.9;
   }
 `;

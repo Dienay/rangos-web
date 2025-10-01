@@ -1,51 +1,51 @@
 import styled from "styled-components";
-import { backgroundColor, color, fontSize } from "../../styles/styleUtils";
 
 export const Fieldset = styled.fieldset`
   position: relative;
-  margin-bottom: 4px;
+  margin-bottom: ${({ theme }) => theme.spacing(1)};
   width: 100%;
 `;
 
 export const Label = styled.label`
-  ${backgroundColor("white")};
-  ${color("textGrey")};
+  background-color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.textLight};
   display: inline-block;
-  ${fontSize("label")};
+  font-size: ${({ theme }) => theme.font.size.small};
   height: 18px;
-  left: 16px;
-  padding: 0 8px;
+  left: ${({ theme }) => theme.spacing(4)};
+  padding: 0 ${({ theme }) => theme.spacing(2)};
   position: absolute;
   top: -7px;
   min-width: 80px;
 `;
 
 export const Input = styled.input`
-  border-radius: 4px;
+  border-radius: ${({ theme }) => theme.radius.small};
   border: 1px solid
-    ${(props) =>
-      props.error
-        ? (props) => props.theme.colors.error
-        : (props) => props.theme.colors.textGrey};
-  ${fontSize("body")};
-  padding: 20px;
+    ${({ theme, error }) =>
+      error ? theme.colors.error : theme.colors.textLight};
+  font-size: ${({ theme }) => theme.font.size.base};
+  padding: ${({ theme }) => theme.spacing(5)};
   width: 100%;
+  box-sizing: border-box;
 `;
 
 export const ViewPasswordIcon = styled.img`
-  top: 20px;
-  height: 20px;
   position: absolute;
-  right: 20px;
+  top: ${({ theme }) => theme.spacing(5)};
+  right: ${({ theme }) => theme.spacing(5)};
+  height: 20px;
+  cursor: pointer;
 `;
 
 export const ErrorMessage = styled.div`
   height: 24px;
-  padding: 0 8px;
+  padding: 0 ${({ theme }) => theme.spacing(2)};
 
   p {
-    ${color("error")};
-    ${fontSize("label")};
+    color: ${({ theme }) => theme.colors.error};
+    font-size: ${({ theme }) => theme.font.size.small};
     line-height: 24px;
+    margin: 0;
   }
 `;

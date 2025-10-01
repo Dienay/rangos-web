@@ -1,109 +1,73 @@
 import styled from "styled-components";
-import { border, color, fontSize } from "../../styles/styleUtils";
 
 export const Container = styled.section`
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: ${({ theme }) => theme.layout.containerMaxWidth};
   position: relative;
   padding: 16px 8px;
-  width: 90vw;
+  width: 100vw;
 `;
 
 export const SearchInput = styled.input`
   display: inline-block;
   width: 100%;
-  padding: 20px;
-  border-radius: 4px;
-  ${border("thin", "textGrey")}
-  ${fontSize("body")};
-  ${color("textGrey")};
+  padding: ${({ theme }) => theme.spacing(5)};
+  border-radius: ${({ theme }) => theme.radius.small};
+  border: ${({ theme }) => `${theme.borders.thin} ${theme.colors.textLight}`};
+  font-size: ${({ theme }) => theme.font.size.base};
+  color: ${({ theme }) => theme.colors.textLight};
 `;
 
 export const Feed = styled.section`
-  padding: 24px 0;
+  padding: ${({ theme }) => theme.spacing(6)} 0;
 `;
 
 export const EstablishmentList = styled.div`
   display: flex;
-  gap: 16px;
   flex-wrap: wrap;
+  gap: ${({ theme }) => theme.spacing(4)};
 `;
 
 export const ResultadoTexto = styled.p`
   width: 100%;
-  margin: 12px 0;
-  padding: 0;
-  font-size: 16px;
+  margin: ${({ theme }) => theme.spacing(3)} 0;
+  font-size: ${({ theme }) => theme.font.size.base};
   text-align: center;
-  color: #000;
+  color: ${({ theme }) => theme.colors.text};
 `;
 export const PedidoEmAndamento = styled.div`
   width: 360px;
   height: 118px;
-  background-color: #e86e5a;
+  background-color: ${({ theme }) => theme.colors.primary};
   position: fixed;
-  bottom: 48px;
+  bottom: ${({ theme }) => theme.spacing(12)};
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 80px 280px;
 `;
 export const Icon = styled.div`
-  width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 export const DadosDoPedido = styled.div`
-  width: 100%;
-  height: 100%;
   display: flex;
-  align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  > * {
-    margin-top: 8px;
-  }
+  gap: ${({ theme }) => theme.spacing(2)};
 `;
 export const PedidoText = styled.div`
-  width: 256px;
-  height: 18px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  font-size: 16px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: -0.39px;
-  color: white;
+  font-size: ${({ theme }) => theme.font.size.base};
+  font-weight: ${({ theme }) => theme.font.weight.bold};
+  color: ${({ theme }) => theme.colors.white};
 `;
 export const Subtotal = styled.div`
-  width: 256px;
-  height: 18px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  font-size: 16px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: -0.39px;
-  color: var(--black);
+  font-size: ${({ theme }) => theme.font.size.base};
+  font-weight: ${({ theme }) => theme.font.weight.bold};
+  color: ${({ theme }) => theme.colors.text};
 `;
 export const EnderecoRestaurante = styled.div`
-  width: 256px;
-  height: 18px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  font-size: 16px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: -0.39px;
-  color: var(--black);
+  font-size: ${({ theme }) => theme.font.size.base};
+  font-weight: ${({ theme }) => theme.font.weight.regular};
+  color: ${({ theme }) => theme.colors.text};
 `;

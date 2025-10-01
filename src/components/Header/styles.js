@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { backgroundColor, color, fontSize } from "../../styles/styleUtils";
 
 export const HeaderContainer = styled.div`
-  padding: 8px 32px;
+  padding: ${({ theme }) => theme.spacing(2)} ${({ theme }) => theme.spacing(8)};
   box-shadow: 0 0.5px 0 rgba(0, 0, 0, 0.25);
   display: flex;
   justify-content: space-between;
@@ -10,21 +9,28 @@ export const HeaderContainer = styled.div`
 `;
 
 export const LogoButton = styled.button`
-  ${backgroundColor("transparent")}
+  background-color: transparent;
   cursor: pointer;
+  border: none;
+  padding: 0;
 `;
 
 export const UserUtilities = styled.section`
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: ${({ theme }) => theme.spacing(8)};
 `;
 
-export const SingUpLink = styled.a`
-  font-weight: 600;
-  ${color("text")}
-  ${fontSize("body")};
+export const SignUpLink = styled.a`
+  font-weight: ${({ theme }) => theme.font.weight.medium};
+  color: ${({ theme }) => theme.colors.text};
+  font-size: ${({ theme }) => theme.font.size.base};
   cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const CartButton = styled.button`
@@ -33,6 +39,8 @@ export const CartButton = styled.button`
   background-color: transparent;
   cursor: pointer;
   position: relative;
+  border: none;
+  padding: 0;
 
   img {
     width: 100%;
@@ -42,11 +50,14 @@ export const CartButton = styled.button`
 
 export const CartCounter = styled.span`
   position: absolute;
-  ${fontSize("label")};
   top: -8px;
   right: -8px;
   min-width: 24px;
-  padding: 2px 4px;
-  border-radius: 25%;
-  ${backgroundColor("primary")}
+  padding: ${({ theme }) => theme.spacing(1)} ${({ theme }) => theme.spacing(2)};
+  border-radius: 50%;
+  background-color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.white};
+  font-size: ${({ theme }) => theme.font.size.small};
+  text-align: center;
+  line-height: 1;
 `;
