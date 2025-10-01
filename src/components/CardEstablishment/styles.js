@@ -1,24 +1,23 @@
 import styled from "styled-components";
-import { color, fontSize } from "../../styles/styleUtils";
 
 export const CardContainer = styled.section`
   width: 320px;
   display: flex;
-  gap: 8px;
+  gap: ${({ theme }) => theme.spacing(2)};
   cursor: pointer;
 `;
 
 export const EstablishmentLogo = styled.img`
   width: 80px;
   height: 80px;
-  padding: 4px;
-  border-radius: 8px;
+  padding: ${({ theme }) => theme.spacing(1)};
+  border-radius: ${({ theme }) => theme.radius.medium};
   box-shadow: -2px 2px 12px -4px rgba(0, 0, 0, 0.45);
   object-fit: contain;
 `;
 
 export const CardContent = styled.section`
-  padding: 4px;
+  padding: ${({ theme }) => theme.spacing(1)};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -26,13 +25,13 @@ export const CardContent = styled.section`
 `;
 
 export const EstablishmentNome = styled.p`
-  ${color("text")}
-  ${fontSize("body")}
+  color: ${({ theme }) => theme.colors.text};
+  font-size: ${({ theme }) => theme.font.size.base};
 `;
 
 export const EstablishmentCategory = styled.span`
-  ${color("textGrey")}
-  ${fontSize("label")}
+  color: ${({ theme }) => theme.colors.textLight};
+  font-size: ${({ theme }) => theme.font.size.small};
 `;
 
 export const CardInfo = styled.div`
@@ -41,20 +40,20 @@ export const CardInfo = styled.div`
 `;
 
 export const CardInfoOpening = styled.p`
-  ${color("textGrey")}
-  ${fontSize("label")}
+  color: ${({ theme }) => theme.colors.textLight};
+  font-size: ${({ theme }) => theme.font.size.small};
 
   .opened {
-    color: #24a724;
+    color: ${({ theme }) => theme.colors.secondary};
   }
 
   .closed {
-    ${color("textGrey")}
+    color: ${({ theme }) => theme.colors.textLight};
     opacity: 0.7;
   }
 `;
 
 export const CardInfoShipping = styled.p`
-  ${color("textGrey")}
-  ${fontSize("label")}
+  color: ${({ theme }) => theme.colors.textLight};
+  font-size: ${({ theme }) => theme.font.size.small};
 `;

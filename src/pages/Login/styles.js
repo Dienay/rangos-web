@@ -1,5 +1,4 @@
 import styled, { keyframes } from "styled-components";
-import { fontSize } from "../../styles/styleUtils";
 
 const fade = keyframes`
 from{
@@ -18,23 +17,23 @@ export const LoginContainer = styled.section`
   display: flex;
   flex-direction: column;
   max-width: 448px;
-  width: calc(100vw - 32px);
+  width: calc(100vw - ${({ theme }) => theme.spacing(8)});
 `;
 
 export const LoginForm = styled.form`
-  margin-top: 24px;
+  margin-top: ${({ theme }) => theme.spacing(6)};
   width: 100%;
 `;
 
 export const Text = styled.p`
-  ${fontSize("body")};
-  margin-top: 24px;
+  font-size: ${({ theme }) => theme.font.size.base};
+  margin-top: ${({ theme }) => theme.spacing(6)};
 `;
 
 export const Link = styled.a`
   display: inline-block;
-  margin-left: 4px;
-  ${fontSize("body")};
+  margin-left: ${({ theme }) => theme.spacing(1)};
+  font-size: ${({ theme }) => theme.font.size.base};
   text-decoration: underline;
   cursor: pointer;
 `;

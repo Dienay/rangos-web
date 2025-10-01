@@ -1,5 +1,4 @@
 import styled, { keyframes } from "styled-components";
-import { fontSize } from "../../styles/styleUtils";
 
 const fade = keyframes`
 from{
@@ -18,27 +17,27 @@ export const SignUpContainer = styled.section`
   display: flex;
   flex-direction: column;
   max-width: 448px;
-  width: calc(100vw - 32px);
+  width: calc(100vw - ${({ theme }) => theme.spacing(8)});
 `;
 
 export const Title = styled.h3`
-  ${fontSize("h1")};
-  font-weight: 300;
-  margin: 24px 0;
+  font-size: ${({ theme }) => theme.font.size.h1};
+  font-weight: ${({ theme }) => theme.font.weight.light};
+  margin: ${({ theme }) => theme.spacing(6)} 0;
 `;
 
 export const UserType = styled.section`
   display: flex;
-  gap: 8px;
-  margin-bottom: 24px;
+  gap: ${({ theme }) => theme.spacing(2)};
+  margin-bottom: ${({ theme }) => theme.spacing(6)};
   width: 100%;
 `;
 
 export const SignUpForm = styled.form`
-  margin-top: 24px;
+  margin-top: ${({ theme }) => theme.spacing(6)};
   width: 100%;
 
   button:first-of-type {
-    margin-bottom: 16px;
+    margin-bottom: ${({ theme }) => theme.spacing(4)};
   }
 `;

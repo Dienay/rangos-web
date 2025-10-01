@@ -1,11 +1,4 @@
 import styled, { keyframes } from "styled-components";
-import {
-  backgroundColor,
-  border,
-  color,
-  fontSize,
-  fontWeight,
-} from "../../styles/styleUtils";
 
 const slideDown = keyframes`
   from {
@@ -32,39 +25,43 @@ const slideUp = keyframes`
 export const DropdownContainer = styled.section`
   position: relative;
   cursor: pointer;
-  ${color("text")}
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 export const DropdownButton = styled.button`
-  ${backgroundColor("transparent")}
-  ${color("text")}
-  ${fontSize("body")}
-  ${fontWeight("bold")}
+  background-color: transparent;
+  color: ${({ theme }) => theme.colors.text};
+  font-size: ${({ theme }) => theme.font.size.base};
+  font-weight: ${({ theme }) => theme.font.weight.bold};
   cursor: pointer;
+  border: none;
+  padding: 0;
 
   &:hover {
-    ${color("primary")}
+    color: ${({ theme }) => theme.colors.primary};
   }
 `;
 
 export const DropdownContent = styled.ul`
-  ${backgroundColor("white")}
-  ${border("thin", "textGrey")}
+  background-color: ${({ theme }) => theme.colors.white};
+  border: ${({ theme }) => `${theme.borders.thin} ${theme.colors.textLight}`};
   position: absolute;
-  border-radius: 4px;
+  border-radius: ${({ theme }) => theme.radius.small};
   right: 0;
-  text-align: right;
   top: 30px;
+  text-align: right;
   min-width: max-content;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: ${({ theme }) => theme.shadows.md};
   display: ${({ isOpen }) => (isOpen ? "block" : "none")};
   animation: ${({ isOpen }) => (isOpen ? slideDown : slideUp)} 0.5s forwards;
   z-index: 1;
 `;
+
 export const DropdownItem = styled.li`
-  padding: 12px 16px;
+  padding: ${({ theme }) => theme.spacing(3)} ${({ theme }) => theme.spacing(4)};
+  cursor: pointer;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.textGrey};
+    background-color: ${({ theme }) => theme.colors.textLight};
   }
 `;
