@@ -16,6 +16,25 @@ export const LogoButton = styled.button`
 `;
 
 export const UserUtilities = styled.section`
+export const SearchInput = styled.input`
+  height: 36px;
+  display: inline-block;
+  width: 100%;
+  max-width: 768px;
+  padding: ${({ theme }) => theme.spacing(2)} ${({ theme }) => theme.spacing(4)};
+  border-radius: ${({ theme }) => theme.radius.medium};
+  border: ${({ theme }) => `${theme.borders.thin} ${theme.colors.borderLight}`};
+  font-size: ${({ theme }) => theme.font.size.base};
+  color: ${({ theme }) => theme.colors.textLight};
+
+  &:focus {
+    border-color: ${({ theme }) => theme.colors.primary};
+  }
+
+  &::placeholder {
+    color: ${({ theme }) => theme.colors.textGrey};
+  }
+`;
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing(8)};

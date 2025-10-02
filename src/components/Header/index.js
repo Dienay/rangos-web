@@ -6,6 +6,7 @@ import {
   LogoButton,
   SingUpLink,
   UserUtilities,
+  SearchInput,
 } from "./styles";
 import Logo from "../Logo";
 import { useNavigate } from "react-router-dom";
@@ -34,6 +35,13 @@ function Header({ orderLength = 0 }) {
         <Logo $variant="small" />
       </LogoButton>
       <UserUtilities>
+      </LogoLink>
+      <SearchInput
+        type="text"
+        placeholder="comida, produto ...ou estabelecimento"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
         {isLoggedIn ? (
           <Dropdown setIsLoggedIn={setIsLoggedIn} />
         ) : (

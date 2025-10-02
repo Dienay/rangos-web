@@ -45,12 +45,6 @@ const HomePage = () => {
         <>
           <Header orderLength={0} />
           <Container>
-            <SearchInput
-              type="text"
-              placeholder="Pesquisar"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
             <Feed>
               <EstablishmentList>
                 {filteredEstablishments.map((establishment) => {

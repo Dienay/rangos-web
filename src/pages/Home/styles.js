@@ -8,16 +8,6 @@ export const Container = styled.section`
   width: 100vw;
 `;
 
-export const SearchInput = styled.input`
-  display: inline-block;
-  width: 100%;
-  padding: ${({ theme }) => theme.spacing(5)};
-  border-radius: ${({ theme }) => theme.radius.small};
-  border: ${({ theme }) => `${theme.borders.thin} ${theme.colors.textLight}`};
-  font-size: ${({ theme }) => theme.font.size.base};
-  color: ${({ theme }) => theme.colors.textLight};
-`;
-
 export const Feed = styled.section`
   padding: ${({ theme }) => theme.spacing(6)} 0;
 `;
