@@ -2,11 +2,12 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const HeaderContainer = styled.div`
-  padding: ${({ theme }) => theme.spacing(2)} ${({ theme }) => theme.spacing(8)};
+  align-items: center;
   box-shadow: 0 0.5px 0 rgba(0, 0, 0, 0.25);
   display: flex;
+  gap: ${({ theme }) => theme.spacing(4)};
   justify-content: space-between;
-  align-items: center;
+  padding: ${({ theme }) => theme.spacing(3)} ${({ theme }) => theme.spacing(8)};
 `;
 
 export const LogoLink = styled(Link)`
