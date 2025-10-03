@@ -15,7 +15,6 @@ export const LogoLink = styled(Link)`
   cursor: pointer;
 `;
 
-export const UserUtilities = styled.section`
 export const SearchContainer = styled.div`
   text-align: center;
   position: relative;

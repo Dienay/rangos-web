@@ -3,10 +3,10 @@ import { useNavigate, useLocation } from "react-router-dom";
 import {
   BagButton,
   HeaderContainer,
-  UserUtilities,
   LogoLink,
   SignUpLink,
   SearchInput,
+  HeaderActions,
   BuyInfo,
   BagDetails,
   BagPrice,
@@ -81,7 +81,6 @@ function Header({
     <HeaderContainer>
       <LogoLink to="/">
         <Logo $variant="small" />
-      <UserUtilities>
       </LogoLink>
       {isHomePage && (
         <SearchContainer>
@@ -113,13 +112,13 @@ function Header({
           )}
         </SearchContainer>
       )}
+      <HeaderActions>
         {isLoggedIn ? (
           <Dropdown setIsLoggedIn={setIsLoggedIn} />
         ) : (
           <SignUpLink to="/login">Entrar</SignUpLink>
         )}
 
-      </UserUtilities>
         <BuyInfo>
           <BagButton>
             <img src={BagIcon} alt="Shopping bag" />
@@ -135,6 +134,7 @@ function Header({
             <BagCounter>{bagCounter} Itens</BagCounter>
           </BagDetails>
         </BuyInfo>
+      </HeaderActions>
     </HeaderContainer>
   );
 }
