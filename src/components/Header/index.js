@@ -3,9 +3,9 @@ import { useNavigate, useLocation } from "react-router-dom";
 import {
   BagButton,
   HeaderContainer,
-  LogoButton,
-  SingUpLink,
   UserUtilities,
+  LogoLink,
+  SignUpLink,
   SearchInput,
   BuyInfo,
   BagDetails,
@@ -29,23 +29,18 @@ function Header({
   establishments = [],
 }) {
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
 
   const token = window.localStorage.getItem("token");
 
+  const [isLoggedIn, setIsLoggedIn] = useState(!!token);
   const [bagCounter, setBagCounter] = useState(0);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    if (token === null) {
-      setIsLoggedIn(false);
-    } else {
-      setIsLoggedIn(true);
-    }
-    setCartCounter(orderLength);
+    setIsLoggedIn(!!token);
     setBagCounter(orderLength);
   }, [orderLength, token]);
 
@@ -84,9 +79,8 @@ function Header({
 
   return (
     <HeaderContainer>
-      <LogoButton onClick={() => navigate("/home")}>
+      <LogoLink to="/">
         <Logo $variant="small" />
-      </LogoButton>
       <UserUtilities>
       </LogoLink>
       {isHomePage && (
@@ -122,7 +116,7 @@ function Header({
         {isLoggedIn ? (
           <Dropdown setIsLoggedIn={setIsLoggedIn} />
         ) : (
-          <SingUpLink onClick={() => navigate("/login")}>Entrar</SingUpLink>
+          <SignUpLink to="/login">Entrar</SignUpLink>
         )}
 
       </UserUtilities>

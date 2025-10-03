@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const HeaderContainer = styled.div`
   padding: ${({ theme }) => theme.spacing(2)} ${({ theme }) => theme.spacing(8)};
@@ -8,11 +9,10 @@ export const HeaderContainer = styled.div`
   align-items: center;
 `;
 
-export const LogoButton = styled.button`
-  background-color: transparent;
+export const LogoLink = styled(Link)`
+  display: inline-block;
+  line-height: 0;
   cursor: pointer;
-  border: none;
-  padding: 0;
 `;
 
 export const UserUtilities = styled.section`
@@ -97,18 +97,17 @@ export const SearchItemText = styled.div`
 export const HeaderActions = styled.div`
   display: flex;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing(8)};
+  gap: ${({ theme }) => theme.spacing(4)};
 `;
 
-export const SignUpLink = styled.a`
-  font-weight: ${({ theme }) => theme.font.weight.medium};
-  color: ${({ theme }) => theme.colors.text};
+export const SignUpLink = styled(Link)`
+  font-weight: ${({ theme }) => theme.font.weight.bold};
   font-size: ${({ theme }) => theme.font.size.base};
   cursor: pointer;
   text-decoration: none;
 
   &:hover {
-    text-decoration: underline;
+    color: ${({ theme }) => theme.colors.primary};
   }
 `;
 
