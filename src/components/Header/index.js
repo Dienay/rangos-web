@@ -82,7 +82,7 @@ function Header({
       <LogoLink to="/">
         <Logo $variant="small" />
       </LogoLink>
-      {isHomePage && (
+      {isHomePage && products.length > 0 && establishments.length > 0 && (
         <SearchContainer>
           <SearchInput
             type="text"
@@ -94,7 +94,7 @@ function Header({
             <SearchDropdown>
               {searchResults.map((item) => (
                 <SearchItem
-                  key={`${item.type}-${item.id}`}
+                  key={`${item.type}-${item._id}`}
                   onClick={() => navigateToItem(item)}
                 >
                   <SearchItemImage
