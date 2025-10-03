@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   BagButton,
   HeaderContainer,
@@ -17,7 +18,6 @@ import {
   SearchItemText,
 } from "./styles";
 import Logo from "../Logo";
-import { useNavigate } from "react-router-dom";
 import BagIcon from "../../Images/icons/shopping-bag.svg";
 import Dropdown from "../Dropdown";
 import DefaultImage from "../../Images/LogoDefault.png";
@@ -30,6 +30,7 @@ function Header({
 }) {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const location = useLocation();
 
   const token = window.localStorage.getItem("token");
 
@@ -37,6 +38,7 @@ function Header({
 
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+
   useEffect(() => {
     if (token === null) {
       setIsLoggedIn(false);
@@ -77,6 +79,9 @@ function Header({
     setSearchTerm("");
     setSearchResults([]);
   };
+
+  const isHomePage = location.pathname === "/";
+
   return (
     <HeaderContainer>
       <LogoButton onClick={() => navigate("/home")}>
@@ -84,6 +89,7 @@ function Header({
       </LogoButton>
       <UserUtilities>
       </LogoLink>
+      {isHomePage && (
         <SearchContainer>
           <SearchInput
             type="text"
@@ -112,6 +118,7 @@ function Header({
             </SearchDropdown>
           )}
         </SearchContainer>
+      )}
         {isLoggedIn ? (
           <Dropdown setIsLoggedIn={setIsLoggedIn} />
         ) : (
