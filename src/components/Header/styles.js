@@ -16,6 +16,12 @@ export const LogoButton = styled.button`
 `;
 
 export const UserUtilities = styled.section`
+export const SearchContainer = styled.div`
+  text-align: center;
+  position: relative;
+  flex: 1;
+`;
+
 export const SearchInput = styled.input`
   height: 36px;
   display: inline-block;
@@ -35,6 +41,60 @@ export const SearchInput = styled.input`
     color: ${({ theme }) => theme.colors.textGrey};
   }
 `;
+
+export const SearchDropdown = styled.div`
+  position: absolute;
+  top: 100%;
+  text-align: left;
+  left: 0;
+  right: 0;
+  background-color: ${({ theme }) => theme.colors.white};
+  border: ${({ theme }) => `${theme.borders.thin} ${theme.colors.borderLight}`};
+  border-radius: ${({ theme }) => theme.radius.medium};
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 100;
+`;
+
+export const SearchItem = styled.div`
+  padding: ${({ theme }) => theme.spacing(2)} ${({ theme }) => theme.spacing(4)};
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.backgroundLight};
+  }
+
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing(2)};
+  font-size: ${({ theme }) => theme.font.size.base};
+`;
+
+export const SearchItemImage = styled.img`
+  width: 40px;
+  height: 40px;
+  border-radius: ${({ theme }) => theme.radius.small};
+  object-fit: contain;
+`;
+
+export const SearchItemText = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  strong {
+    font-size: ${({ theme }) => theme.font.size.base};
+    color: ${({ theme }) => theme.colors.text};
+  }
+
+  span {
+    font-size: ${({ theme }) => theme.font.size.small};
+    color: ${({ theme }) => theme.colors.textLight};
+  }
+`;
+
+export const HeaderActions = styled.div`
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing(8)};
