@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-import { Container, SearchInput, EstablishmentList, Feed } from "./styles";
+import { Container, EstablishmentList, Feed } from "./styles";
 
 import { Loading, Header, CardEstablishment } from "../../components";
 import { env } from "../../utils";
@@ -12,8 +12,18 @@ const HomePage = () => {
 
   const { API_URL } = env;
 
+  const [productList, setProductList] = useState([]);
   const [establishmentList, setEstablishmentList] = useState([]);
-  const [search, setSearch] = useState("");
+
+  const getProducts = useCallback(async () => {
+    try {
+      const response = await axios.get(`${API_URL}/products`);
+
+      setProductList(response.data.products);
+    } catch (err) {
+      console.log(err);
+    }
+  }, [API_URL]);
 
   const getEstablishments = useCallback(async () => {
     try {
@@ -29,13 +39,10 @@ const HomePage = () => {
     navigate(`/establishment/${id}`);
   };
 
-  const filteredEstablishments = establishmentList.filter((establishment) =>
-    establishment.name.toLowerCase().includes(search.toLowerCase()),
-  );
-
   useEffect(() => {
+    getProducts();
     getEstablishments();
-  }, [getEstablishments]);
+  }, [getEstablishments, getProducts]);
 
   return (
     <>
@@ -43,17 +50,15 @@ const HomePage = () => {
         <Loading />
       ) : (
         <>
-          <Header orderLength={0} />
+          <Header
+            orderLength={0}
+            products={productList}
+            establishments={establishmentList}
+          />
           <Container>
-            <SearchInput
-              type="text"
-              placeholder="Pesquisar"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
             <Feed>
               <EstablishmentList>
-                {filteredEstablishments.map((establishment) => {
+                {establishmentList.map((establishment) => {
                   return (
                     <CardEstablishment
                       key={establishment._id}

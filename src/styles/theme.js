@@ -15,6 +15,7 @@ export const theme = {
   font: {
     family: "'Roboto', sans-serif",
     size: {
+      label: "0.75rem", // 12px
       small: "0.875rem", // 14px
       base: "1rem", // 16px
       h3: "1.125rem", // 18px
