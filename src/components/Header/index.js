@@ -1,25 +1,28 @@
 import React, { useEffect, useState } from "react";
 import {
-  CartButton,
-  CartCounter,
+  BagButton,
   HeaderContainer,
   LogoButton,
   SingUpLink,
   UserUtilities,
   SearchInput,
+  BuyInfo,
+  BagDetails,
+  BagPrice,
+  BagCounter,
 } from "./styles";
 import Logo from "../Logo";
 import { useNavigate } from "react-router-dom";
-import Cart from "../../Images/icons/cart.svg";
+import BagIcon from "../../Images/icons/shopping-bag.svg";
 import Dropdown from "../Dropdown";
 
 function Header({ orderLength = 0 }) {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [cartCounter, setCartCounter] = useState(0);
 
   const token = window.localStorage.getItem("token");
 
+  const [bagCounter, setBagCounter] = useState(0);
   useEffect(() => {
     if (token === null) {
       setIsLoggedIn(false);
@@ -27,6 +30,7 @@ function Header({ orderLength = 0 }) {
       setIsLoggedIn(true);
     }
     setCartCounter(orderLength);
+    setBagCounter(orderLength);
   }, [orderLength, token]);
 
   return (
@@ -48,11 +52,22 @@ function Header({ orderLength = 0 }) {
           <SingUpLink onClick={() => navigate("/login")}>Entrar</SingUpLink>
         )}
 
-        <CartButton>
-          <img src={Cart} alt="Carrinho" />
-          {cartCounter === 0 ? <></> : <CartCounter>{cartCounter}</CartCounter>}
-        </CartButton>
       </UserUtilities>
+        <BuyInfo>
+          <BagButton>
+            <img src={BagIcon} alt="Shopping bag" />
+          </BagButton>
+
+          <BagDetails>
+            <BagPrice>
+              {new Intl.NumberFormat("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+              }).format(bagTotal)}
+            </BagPrice>
+            <BagCounter>{bagCounter} Itens</BagCounter>
+          </BagDetails>
+        </BuyInfo>
     </HeaderContainer>
   );
 }

@@ -52,9 +52,13 @@ export const SignUpLink = styled.a`
   }
 `;
 
-export const CartButton = styled.button`
-  height: 32px;
-  width: 32px;
+export const BuyInfo = styled.section`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing(2)};
+`;
+
+export const BagButton = styled.button`
   background-color: transparent;
   cursor: pointer;
   position: relative;
@@ -62,9 +66,19 @@ export const CartButton = styled.button`
   padding: 0;
 
   img {
-    width: 100%;
-    height: 100%;
+    width: 32px;
+    height: 32px;
   }
+`;
+
+export const BagDetails = styled.div``;
+
+export const BagPrice = styled.p`
+  font-size: ${({ theme }) => theme.font.size.small};
+`;
+
+export const BagCounter = styled.p`
+  font-size: ${({ theme }) => theme.font.size.label};
 `;
 
 export const CartCounter = styled.span`
