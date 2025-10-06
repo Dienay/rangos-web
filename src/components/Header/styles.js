@@ -197,10 +197,11 @@ export const BagCounter = styled.p`
     display: flex;
     align-items: center;
     justify-content: center;
-    top: -4px;
-    right: -4px;
-    width: 16px;
-    height: 16px;
+    top: -6px;
+    right: -8px;
+    padding: 2px 4px;
+    width: 20px;
+    height: 20px;
     background-color: ${({ theme }) => theme.colors.text};
     color: ${({ theme }) => theme.colors.white};
     border-radius: 50%;
