@@ -103,7 +103,7 @@ function Header({
   return (
     <HeaderContainer>
       <LogoLink to="/">
-        <Logo $variant="small" />
+        <Logo $variant="base" />
       </LogoLink>
       {isHomePage && products.length > 0 && establishments.length > 0 && (
         <SearchContainer ref={searchRef}>

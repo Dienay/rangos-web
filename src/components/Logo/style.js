@@ -1,15 +1,15 @@
 import styled, { css } from "styled-components";
 
 const small = css`
+  height: 32px;
+`;
+
+const base = css`
   height: 48px;
 `;
 
-const normal = css`
-  height: 64px;
-`;
-
 const large = css`
-  height: 80px;
+  height: 64px;
 `;
 
 export const LogoStyle = styled.img`
@@ -19,12 +19,12 @@ export const LogoStyle = styled.img`
     switch ($variant) {
       case "small":
         return small;
-      case "normal":
-        return normal;
+      case "base":
+        return base;
       case "large":
         return large;
       default:
-        return normal;
+        return base;
     }
   }}
 `;
