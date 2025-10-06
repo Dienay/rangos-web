@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
   BagButton,
@@ -39,6 +39,9 @@ function Header({
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
+  const [isOpen, setIsOpen] = useState(false);
+  const searchRef = useRef(null);
+
   useEffect(() => {
     setIsLoggedIn(!!token);
     setBagCounter(orderLength);
@@ -77,37 +80,64 @@ function Header({
 
   const isHomePage = location.pathname === "/";
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    function handleKeyDown(event) {
+      if (event.key === "Escape") setIsOpen(false);
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  });
+
   return (
     <HeaderContainer>
       <LogoLink to="/">
         <Logo $variant="small" />
       </LogoLink>
       {isHomePage && products.length > 0 && establishments.length > 0 && (
-        <SearchContainer>
+        <SearchContainer ref={searchRef}>
           <SearchInput
             type="text"
             placeholder="comida, produto ...ou estabelecimento"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            onFocus={() => setIsOpen(true)}
           />
-          {searchResults.length > 0 && (
+          {isOpen && (
             <SearchDropdown>
-              {searchResults.map((item) => (
-                <SearchItem
-                  key={`${item.type}-${item._id}`}
-                  onClick={() => navigateToItem(item)}
-                >
-                  <SearchItemImage
-                    src={item.coverPhoto}
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = DefaultImage;
-                    }}
-                    alt={item.name}
-                  />
-                  <SearchItemText>{item.name}</SearchItemText>
-                </SearchItem>
-              ))}
+              {searchResults.length > 0 ? (
+                searchResults.map((item) => (
+                  <SearchItem
+                    key={`${item.type}-${item._id}`}
+                    onClick={() => navigateToItem(item)}
+                  >
+                    <SearchItemImage
+                      src={item.coverPhoto || DefaultImage}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = DefaultImage;
+                      }}
+                      alt={item.name}
+                    />
+                    <SearchItemText>{item.name}</SearchItemText>
+                  </SearchItem>
+                ))
+              ) : searchTerm.trim() ? (
+                <SearchItemText style={{ padding: "1rem", color: "#888" }}>
+                  Nenhum resultado encontrado
+                </SearchItemText>
+              ) : null}
             </SearchDropdown>
           )}
         </SearchContainer>

@@ -8,12 +8,23 @@ export const HeaderContainer = styled.div`
   gap: ${({ theme }) => theme.spacing(4)};
   justify-content: space-between;
   padding: ${({ theme }) => theme.spacing(3)} ${({ theme }) => theme.spacing(8)};
+
+  @media (max-width: 768px) {
+    padding: ${({ theme }) => `${theme.spacing(2)} ${theme.spacing(4)}`};
+    gap: ${({ theme }) => theme.spacing(2)};
+  }
 `;
 
 export const LogoLink = styled(Link)`
   display: inline-block;
   line-height: 0;
   cursor: pointer;
+
+  img {
+    @media (max-width: 768px) {
+      height: 32px;
+    }
+  }
 `;
 
 export const SearchContainer = styled.div`
@@ -21,6 +32,10 @@ export const SearchContainer = styled.div`
   position: relative;
   flex: 1;
   max-width: 768px;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
 `;
 
 export const SearchInput = styled.input`
@@ -45,7 +60,6 @@ export const SearchInput = styled.input`
 export const SearchDropdown = styled.div`
   position: absolute;
   top: 100%;
-  text-align: left;
   left: 0;
   right: 0;
   background-color: ${({ theme }) => theme.colors.white};
@@ -55,43 +69,62 @@ export const SearchDropdown = styled.div`
   max-height: 300px;
   overflow-y: auto;
   z-index: 100;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: ${({ theme }) => theme.colors.borderLight};
+    border-radius: ${({ theme }) => theme.radius.medium};
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.colors.primary};
+    border-radius: ${({ theme }) => theme.radius.medium};
+  }
+
+  @media (max-width: 768px) {
+    width: 100vw;
+    border-radius: 0;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    top: 44px;
+    max-height: 200px;
+  }
+`;
+
+export const SearchItemText = styled.div`
+  @media (max-width: 768px) {
+    font-size: ${({ theme }) => theme.font.size.small};
+  }
 `;
 
 export const SearchItem = styled.div`
-  padding: ${({ theme }) => theme.spacing(2)} ${({ theme }) => theme.spacing(4)};
+  align-items: center;
   cursor: pointer;
+  display: flex;
+  font-size: ${({ theme }) => theme.font.size.base};
+  gap: ${({ theme }) => theme.spacing(2)};
+  padding: ${({ theme }) => `${theme.spacing(2)} ${theme.spacing(4)}`};
   transition: background-color 0.2s;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.backgroundLight};
+    background-color: ${({ theme }) => theme.colors.primary};
   }
 
-  display: flex;
-  align-items: center;
-  gap: ${({ theme }) => theme.spacing(2)};
-  font-size: ${({ theme }) => theme.font.size.base};
+  &:hover ${SearchItemText} {
+    color: ${({ theme }) => theme.colors.white};
+  }
 `;
 
 export const SearchItemImage = styled.img`
+  background-color: ${({ theme }) => theme.colors.backgroundLight};
   width: 40px;
   height: 40px;
   border-radius: ${({ theme }) => theme.radius.small};
   object-fit: contain;
-`;
-
-export const SearchItemText = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  strong {
-    font-size: ${({ theme }) => theme.font.size.base};
-    color: ${({ theme }) => theme.colors.text};
-  }
-
-  span {
-    font-size: ${({ theme }) => theme.font.size.small};
-    color: ${({ theme }) => theme.colors.textLight};
-  }
 `;
 
 export const HeaderActions = styled.div`
@@ -108,6 +141,10 @@ export const SignUpLink = styled(Link)`
 
   &:hover {
     color: ${({ theme }) => theme.colors.primary};
+  }
+
+  @media (max-width: 768px) {
+    font-size: ${({ theme }) => theme.font.size.small};
   }
 `;
 
