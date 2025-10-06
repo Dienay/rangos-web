@@ -20,13 +20,13 @@ export const SearchContainer = styled.div`
   text-align: center;
   position: relative;
   flex: 1;
+  max-width: 768px;
 `;
 
 export const SearchInput = styled.input`
   height: 36px;
   display: inline-block;
   width: 100%;
-  max-width: 768px;
   padding: ${({ theme }) => theme.spacing(2)} ${({ theme }) => theme.spacing(4)};
   border-radius: ${({ theme }) => theme.radius.medium};
   border: ${({ theme }) => `${theme.borders.thin} ${theme.colors.borderLight}`};
