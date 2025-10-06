@@ -116,22 +116,28 @@ function Header({
           />
           {isOpen && (
             <SearchDropdown>
-              {searchResults.map((item) => (
-                <SearchItem
-                  key={`${item.type}-${item._id}`}
-                  onClick={() => navigateToItem(item)}
-                >
-                  <SearchItemImage
-                    src={item.coverPhoto}
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = DefaultImage;
-                    }}
-                    alt={item.name}
-                  />
-                  <SearchItemText>{item.name}</SearchItemText>
-                </SearchItem>
-              ))}
+              {searchResults.length > 0 ? (
+                searchResults.map((item) => (
+                  <SearchItem
+                    key={`${item.type}-${item._id}`}
+                    onClick={() => navigateToItem(item)}
+                  >
+                    <SearchItemImage
+                      src={item.coverPhoto || DefaultImage}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = DefaultImage;
+                      }}
+                      alt={item.name}
+                    />
+                    <SearchItemText>{item.name}</SearchItemText>
+                  </SearchItem>
+                ))
+              ) : searchTerm.trim() ? (
+                <SearchItemText style={{ padding: "1rem", color: "#888" }}>
+                  Nenhum resultado encontrado
+                </SearchItemText>
+              ) : null}
             </SearchDropdown>
           )}
         </SearchContainer>
