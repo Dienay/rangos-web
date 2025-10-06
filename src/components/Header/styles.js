@@ -85,11 +85,11 @@ export const SearchDropdown = styled.div`
   }
 
   @media (max-width: 768px) {
-    width: 100vw;
+    width: calc(100vw - 8px);
     border-radius: 0;
     left: 50%;
     right: auto;
-    transform: translateX(-50%);
+    transform: translateX(calc(-50% + 8px));
     top: 44px;
     max-height: 200px;
   }
