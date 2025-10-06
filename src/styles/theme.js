@@ -7,6 +7,12 @@ export const theme = {
     textGrey: "#a9a9a9",
     textLight: "#8d8686",
     borderLight: "#e0e0e0",
+    borderDark: "#c4c4c4",
+    success: "#4bb543",
+    warning: "#ffcc00",
+
+    backgroundDark: "#d7d5d5",
+    backgroundLight: "#fefefe",
     background: "#f0f2f5",
     white: "#ffffff",
 

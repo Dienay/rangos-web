@@ -161,7 +161,9 @@ function Header({
                 currency: "BRL",
               }).format(bagTotal)}
             </BagPrice>
-            <BagCounter>{bagCounter} Itens</BagCounter>
+            <BagCounter>
+              {bagCounter} <span>Itens</span>
+            </BagCounter>
           </BagDetails>
         </BuyInfo>
       </HeaderActions>

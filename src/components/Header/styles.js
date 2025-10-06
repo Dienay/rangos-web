@@ -149,9 +149,14 @@ export const SignUpLink = styled(Link)`
 `;
 
 export const BuyInfo = styled.section`
+  position: relative;
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing(2)};
+
+  @media (max-width: 768px) {
+    gap: 0;
+  }
 `;
 
 export const BagButton = styled.button`
@@ -165,16 +170,46 @@ export const BagButton = styled.button`
     width: 32px;
     height: 32px;
   }
+
+  @media (max-width: 768px) {
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
 `;
 
 export const BagDetails = styled.div``;
 
 export const BagPrice = styled.p`
   font-size: ${({ theme }) => theme.font.size.small};
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const BagCounter = styled.p`
   font-size: ${({ theme }) => theme.font.size.label};
+
+  @media (max-width: 768px) {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -4px;
+    right: -4px;
+    width: 16px;
+    height: 16px;
+    background-color: ${({ theme }) => theme.colors.text};
+    color: ${({ theme }) => theme.colors.white};
+    border-radius: 50%;
+    font-weight: ${({ theme }) => theme.font.weight.bold};
+
+    span {
+      display: none;
+    }
+  }
 `;
 
 export const CartCounter = styled.span`
