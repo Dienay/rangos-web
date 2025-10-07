@@ -55,9 +55,15 @@ export const DropdownContent = styled.ul`
   text-align: right;
   padding: ${({ theme }) => theme.spacing(2)};
   min-width: max-content;
-  display: ${({ isOpen }) => (isOpen ? "block" : "none")};
-  animation: ${({ isOpen }) => (isOpen ? slideDown : slideUp)} 0.5s forwards;
   box-shadow: ${({ theme }) => theme.shadows.lg};
+  opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
+  transform: ${({ isOpen }) =>
+    isOpen ? "translateY(0)" : "translateY(-10px)"};
+  visibility: ${({ isOpen }) => (isOpen ? "visible" : "hidden")};
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0.3s ease;
   z-index: 1;
 `;
 
