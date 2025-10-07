@@ -128,6 +128,7 @@ export const SearchItemImage = styled.img`
 `;
 
 export const HeaderActions = styled.div`
+  height: 36px;
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing(4)};
