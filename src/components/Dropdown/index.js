@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   DropdownButton,
@@ -46,14 +46,17 @@ function Dropdown({ setIsLoggedIn }) {
     <DropdownContainer ref={dropdownRef}>
       <DropdownButton onClick={toggleDropdown}>Menu</DropdownButton>
       <DropdownContent isOpen={isOpen}>
-        <DropdownItem href="#option1" onClick={() => onClickMenu("/login")}>
-          Option 1
+        <DropdownItem href="#option1" onClick={() => onClickMenu("/perfil")}>
+          Perfil
         </DropdownItem>
         <DropdownItem href="#option2" onClick={() => onClickMenu("/cadastro")}>
-          Option 2
+          Histórico de pedidos
+        </DropdownItem>
+        <DropdownItem href="#option2" onClick={() => onClickMenu("/cadastro")}>
+          Endereços
         </DropdownItem>
         <DropdownItem onClick={logout} href="#option3">
-          Logout
+          Sair
         </DropdownItem>
       </DropdownContent>
     </DropdownContainer>
