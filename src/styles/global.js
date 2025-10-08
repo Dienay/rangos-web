@@ -18,7 +18,7 @@ export const GlobalStyle = createGlobalStyle`
     font-size: ${({ theme }) => theme.font.size.base};
     font-weight: ${({ theme }) => theme.font.weight.regular};
     line-height: 1.5;
-    background-color: ${({ theme }) => theme.colors.background};
+    background-color: ${({ theme }) => theme.colors.backgroundLight};
     color: ${({ theme }) => theme.colors.text};
     -webkit-font-smoothing: antialiased;
   }
@@ -30,7 +30,6 @@ export const GlobalStyle = createGlobalStyle`
 
   button {
     cursor: pointer;
-    border: none;
     background: none;
   }
 
