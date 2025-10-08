@@ -8,8 +8,6 @@ import {
   SearchInput,
   HeaderActions,
   BuyInfo,
-  BagDetails,
-  BagPrice,
   BagCounter,
   SearchContainer,
   SearchDropdown,
@@ -153,20 +151,7 @@ function Header({
           <BagButton>
             <img src={BagIcon} alt="Shopping bag" />
           </BagButton>
-
-          <BagDetails>
-            <BagPrice>
-              {new Intl.NumberFormat("pt-BR", {
-                style: "currency",
-                currency: "BRL",
-              }).format(bagTotal)}
-            </BagPrice>
-            {bagCounter > 0 && (
-              <BagCounter>
-                {bagCounter} <span>Itens</span>
-              </BagCounter>
-            )}
-          </BagDetails>
+          {bagCounter > 0 && <BagCounter>{bagCounter}</BagCounter>}
         </BuyInfo>
       </HeaderActions>
     </HeaderContainer>

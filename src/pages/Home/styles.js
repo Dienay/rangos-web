@@ -5,7 +5,7 @@ export const Container = styled.section`
   max-width: ${({ theme }) => theme.layout.containerMaxWidth};
   position: relative;
   padding: 16px 8px;
-  width: 100vw;
+  width: 100%;
 `;
 
 export const Feed = styled.section`
