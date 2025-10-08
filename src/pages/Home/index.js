@@ -1,48 +1,47 @@
 import { useEffect, useState, useCallback } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
+import { getProducts } from "../../api/productService";
+import { getEstablishments } from "../../api/establishmentService";
 
 import { Container, EstablishmentList, Feed } from "./styles";
 
 import { Loading, Header, CardEstablishment } from "../../components";
-import { env } from "../../utils";
 
-const HomePage = () => {
+const Home = () => {
   const navigate = useNavigate();
-
-  const { API_URL } = env;
 
   const [productList, setProductList] = useState([]);
   const [establishmentList, setEstablishmentList] = useState([]);
 
-  const getProducts = useCallback(async () => {
+  const loadProducts = useCallback(async () => {
     try {
-      const response = await axios.get(`${API_URL}/products`);
+      const products = await getProducts();
 
-      setProductList(response.data.products);
+      setProductList(products);
     } catch (err) {
-      console.log(err);
+      console.log("Erro ao carregar produtos:", err);
     }
-  }, [API_URL]);
+  }, []);
 
-  const getEstablishments = useCallback(async () => {
+  const loadEstablishments = useCallback(async () => {
     try {
-      const response = await axios.get(`${API_URL}/establishments`);
+      const establishments = await getEstablishments();
 
-      setEstablishmentList(response.data.establishments);
+      setEstablishmentList(establishments);
     } catch (err) {
-      console.log(err);
+      console.log("Erro ao carregar estabelecimentos:", err);
     }
-  }, [API_URL]);
+  }, []);
 
   const openEstablishment = (id) => {
     navigate(`/establishment/${id}`);
   };
 
   useEffect(() => {
-    getProducts();
-    getEstablishments();
-  }, [getEstablishments, getProducts]);
+    loadProducts();
+    loadEstablishments();
+  }, [loadProducts, loadEstablishments]);
 
   return (
     <>
@@ -58,15 +57,16 @@ const HomePage = () => {
           <Container>
             <Feed>
               <EstablishmentList>
-                {establishmentList.map((establishment) => {
-                  return (
-                    <CardEstablishment
-                      key={establishment._id}
-                      establishment={establishment}
-                      onClick={() => openEstablishment(establishment._id)}
-                    />
-                  );
-                })}
+                {Array.isArray(establishmentList) &&
+                  establishmentList.map((establishment) => {
+                    return (
+                      <CardEstablishment
+                        key={establishment._id}
+                        establishment={establishment}
+                        onClick={() => openEstablishment(establishment._id)}
+                      />
+                    );
+                  })}
               </EstablishmentList>
             </Feed>
           </Container>
@@ -76,4 +76,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;
