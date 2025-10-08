@@ -6,7 +6,12 @@ import { getEstablishments } from "../../api/establishmentService";
 
 import { Container, EstablishmentList, Feed } from "./styles";
 
-import { Loading, Header, CardEstablishment } from "../../components";
+import {
+  Loading,
+  Header,
+  NoticePill,
+  CardEstablishment,
+} from "../../components";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -54,6 +59,7 @@ const Home = () => {
             products={productList}
             establishments={establishmentList}
           />
+          <NoticePill />
           <Container>
             <Feed>
               <EstablishmentList>
