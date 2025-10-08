@@ -180,38 +180,21 @@ export const BagButton = styled.button`
   }
 `;
 
-export const BagDetails = styled.div``;
-
-export const BagPrice = styled.p`
-  font-size: ${({ theme }) => theme.font.size.small};
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
 export const BagCounter = styled.p`
   font-size: ${({ theme }) => theme.font.size.label};
-
-  @media (max-width: 768px) {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: -6px;
-    right: -8px;
-    padding: 2px 4px;
-    width: 20px;
-    height: 20px;
-    background-color: ${({ theme }) => theme.colors.text};
-    color: ${({ theme }) => theme.colors.white};
-    border-radius: 50%;
-    font-weight: ${({ theme }) => theme.font.weight.bold};
-
-    span {
-      display: none;
-    }
-  }
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -6px;
+  right: -8px;
+  padding: 2px 4px;
+  width: 20px;
+  height: 20px;
+  background-color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.white};
+  border-radius: 50%;
+  font-weight: ${({ theme }) => theme.font.weight.bold};
 `;
 
 export const CartCounter = styled.span`
