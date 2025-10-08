@@ -14,7 +14,7 @@ function Router() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/login" element={<Login />} />
-        <Route exact path="/cadastro" element={<Register />} />
+        <Route exact path="/register" element={<Register />} />
         <Route exact path="/establishment/:id" element={<Establishments />} />
         <Route exact path="/carrinho" element={<Cart />} />
         <Route exact path="/perfil" element={<Profile />} />

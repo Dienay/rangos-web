@@ -20,12 +20,7 @@ import BagIcon from "../../Images/icons/shopping-bag.svg";
 import Dropdown from "../Dropdown";
 import DefaultImage from "../../Images/LogoDefault.png";
 
-function Header({
-  orderLength = 0,
-  bagTotal = 0,
-  products = [],
-  establishments = [],
-}) {
+function Header({ orderLength = 0, products = [], establishments = [] }) {
   const navigate = useNavigate();
   const location = useLocation();
 
