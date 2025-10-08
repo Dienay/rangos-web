@@ -49,7 +49,7 @@ function LoginPage() {
         window.localStorage.setItem("token", response.data.token);
         if (response.data.token) {
           resetInput();
-          navigate("/home");
+          navigate("/");
         } else {
           navigate("/cadastro");
         }
