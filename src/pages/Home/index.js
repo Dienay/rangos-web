@@ -15,6 +15,7 @@ import {
 const Home = () => {
   const navigate = useNavigate();
 
+  const [loading, setLoading] = useState(true);
 
   const [products, setProducts] = useState([]);
   const [establishments, setEstablishments] = useState([]);
@@ -91,22 +92,18 @@ const Home = () => {
     navigate(`/establishment/${id}`);
   };
 
+  if (loading) return <Loading />;
 
   return (
     <>
-      {!establishmentList || establishmentList.length === 0 ? (
-        <Loading />
-      ) : (
-        <>
-          <Header
-            orderLength={0}
-            products={productList}
-            establishments={establishmentList}
-          />
-          <NoticePill />
-          <Container>
-            <Feed>
+      <Header
+        orderLength={0}
+        products={products}
+        establishments={establishments}
+      />
       <NoticePill />
+      <Container>
+        <Feed>
           {freeShipping.length > 0 && (
             <>
               <h2>Entrega Grátis</h2>
@@ -144,10 +141,10 @@ const Home = () => {
                   return <div key={product._id}>{product.name}</div>;
                 })}
               </EstablishmentList>
-            </Feed>
-          </Container>
-        </>
-      )}
+            </>
+          )}
+        </Feed>
+      </Container>
     </>
   );
 };
