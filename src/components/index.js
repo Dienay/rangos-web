@@ -10,3 +10,4 @@ export { default as Loading } from "./Loading";
 export { default as Logo } from "./Logo";
 export { default as NoticePill } from "./NoticePill";
 export { default as Carousel } from "./Carousel";
+export { default as CardProduct } from "./CardProduct";
