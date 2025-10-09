@@ -1,9 +1,8 @@
-import React from "react";
 import {
   CardContainer,
   EstablishmentLogo,
   CardContent,
-  EstablishmentNome,
+  EstablishmentName,
   CardInfo,
   EstablishmentCategory,
   CardInfoShipping,
@@ -64,18 +63,18 @@ const CardEstablishment = ({ establishment, onClick }) => {
         alt="Foto do establishment"
       />
       <CardContent>
-        <EstablishmentNome>{establishment.name}</EstablishmentNome>
+        <EstablishmentName>{establishment.name}</EstablishmentName>
         <EstablishmentCategory>{establishment.category}</EstablishmentCategory>
         <CardInfo>
-          <CardInfoOpening>
+          {/* <CardInfoOpening>
             {isEstablishmentOpen(establishment.openingHours) ? (
               <span className="opened">aberto</span>
             ) : (
               <span className="closed">fechado</span>
             )}
-          </CardInfoOpening>
+          </CardInfoOpening> */}
           <CardInfoShipping>
-            {establishment.deliveryTime} min -
+            Entrega: {establishment.deliveryTime} min -
             {establishment.shipping
               ? ` R$${establishment.shipping},00`
               : " grátis"}

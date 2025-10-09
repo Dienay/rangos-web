@@ -1,37 +1,47 @@
 import styled from "styled-components";
 
 export const CardContainer = styled.section`
-  width: 320px;
+  border-radius: ${({ theme }) => theme.radius.medium};
+  border: ${({ theme }) => `${theme.borders.thin} ${theme.colors.borderLight}`};
+  box-shadow: ${({ theme }) => theme.shadows.md};
+  cursor: pointer;
   display: flex;
   gap: ${({ theme }) => theme.spacing(2)};
-  cursor: pointer;
+  height: 80px;
+  min-width: 320px;
+  padding: ${({ theme }) => `${theme.spacing(1)} ${theme.spacing(2)}`};
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
 `;
 
 export const EstablishmentLogo = styled.img`
-  width: 80px;
-  height: 80px;
-  padding: ${({ theme }) => theme.spacing(1)};
+  align-self: center;
+  width: 64px;
+  height: 64px;
   border-radius: ${({ theme }) => theme.radius.medium};
-  box-shadow: -2px 2px 12px -4px rgba(0, 0, 0, 0.45);
   object-fit: contain;
 `;
 
 export const CardContent = styled.section`
   padding: ${({ theme }) => theme.spacing(1)};
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
+  display: grid;
+  align-content: space-between;
 `;
 
-export const EstablishmentNome = styled.p`
+export const EstablishmentName = styled.p`
   color: ${({ theme }) => theme.colors.text};
-  font-size: ${({ theme }) => theme.font.size.base};
+  font-size: ${({ theme }) => theme.font.size.h3};
+  line-height: 1;
+  font-weight: ${({ theme }) => theme.font.weight.medium};
 `;
 
 export const EstablishmentCategory = styled.span`
   color: ${({ theme }) => theme.colors.textLight};
   font-size: ${({ theme }) => theme.font.size.small};
+  line-height: 1;
 `;
 
 export const CardInfo = styled.div`
@@ -55,5 +65,6 @@ export const CardInfoOpening = styled.p`
 
 export const CardInfoShipping = styled.p`
   color: ${({ theme }) => theme.colors.textLight};
-  font-size: ${({ theme }) => theme.font.size.small};
+  font-size: ${({ theme }) => theme.font.size.label};
+  line-height: 1;
 `;
