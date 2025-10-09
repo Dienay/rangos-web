@@ -53,6 +53,6 @@ export const CloseButton = styled.button`
   line-height: 1;
 
   &:hover {
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.text};
   }
 `;
