@@ -3,13 +3,15 @@ import { useNavigate } from "react-router-dom";
 
 import { getProducts, getEstablishments, getOrders } from "../../api";
 
-import { Container, EstablishmentList, Feed } from "./styles";
+import { CategoryList, Container, Feed } from "./styles";
 
 import {
   Loading,
   Header,
   NoticePill,
   CardEstablishment,
+  Carousel,
+  CardProduct,
 } from "../../components";
 
 const Home = () => {
@@ -92,6 +94,10 @@ const Home = () => {
     navigate(`/establishment/${id}`);
   };
 
+  const openProduct = (id) => {
+    navigate(`/product/${id}`);
+  };
+
   if (loading) return <Loading />;
 
   return (
@@ -105,9 +111,9 @@ const Home = () => {
       <Container>
         <Feed>
           {freeShipping.length > 0 && (
-            <>
+            <CategoryList>
               <h2>Entrega Grátis</h2>
-              <EstablishmentList>
+              <Carousel>
                 {freeShipping.map((establishment) => (
                   <CardEstablishment
                     key={establishment._id}
@@ -115,14 +121,14 @@ const Home = () => {
                     onClick={() => openEstablishment(establishment._id)}
                   />
                 ))}
-              </EstablishmentList>
-            </>
+              </Carousel>
+            </CategoryList>
           )}
 
           {openNow.length > 0 && (
-            <>
+            <CategoryList>
               <h2>Aberto Agora</h2>
-              <EstablishmentList>
+              <Carousel>
                 {openNow.map((establishment) => (
                   <CardEstablishment
                     key={establishment._id}
@@ -130,18 +136,24 @@ const Home = () => {
                     onClick={() => openEstablishment(establishment._id)}
                   />
                 ))}
-              </EstablishmentList>
-            </>
+              </Carousel>
+            </CategoryList>
           )}
+
           {mostSoldProducts.length > 0 && (
-            <>
-              <h2>Mais Vendidos</h2>
-              <EstablishmentList>
-                {mostSoldProducts.map((product) => {
-                  return <div key={product._id}>{product.name}</div>;
-                })}
-              </EstablishmentList>
-            </>
+            <CategoryList>
+              <h2>Top 10 mais Vendidos</h2>
+              <Carousel>
+                {mostSoldProducts.map((product, index) => (
+                  <CardProduct
+                    key={product._id}
+                    product={product}
+                    rank={index + 1}
+                    onClick={() => openProduct(product._id)}
+                  />
+                ))}
+              </Carousel>
+            </CategoryList>
           )}
         </Feed>
       </Container>
