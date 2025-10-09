@@ -15,28 +15,34 @@ import {
 const Home = () => {
   const navigate = useNavigate();
 
-  const [productList, setProductList] = useState([]);
-  const [establishmentList, setEstablishmentList] = useState([]);
 
-  const loadProducts = useCallback(async () => {
+  const [products, setProducts] = useState([]);
+  const [establishments, setEstablishments] = useState([]);
+  const [orders, setOrders] = useState([]);
+
+  // --- Data Fetching ---
+  const loadData = useCallback(async () => {
     try {
-      const products = await getProducts();
+      const [establishmentData, productData, orderData] = await Promise.all([
+        getEstablishments(),
+        getProducts(),
+        getOrders(),
+      ]);
 
-      setProductList(products);
+      setEstablishments(establishmentData);
+      setProducts(productData);
+      setOrders(orderData);
     } catch (err) {
-      console.log("Erro ao carregar produtos:", err);
+      console.log("Erro ao carregar dados:", err);
+    } finally {
+      setLoading(false);
     }
   }, []);
 
-  const loadEstablishments = useCallback(async () => {
-    try {
-      const establishments = await getEstablishments();
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
 
-      setEstablishmentList(establishments);
-    } catch (err) {
-      console.log("Erro ao carregar estabelecimentos:", err);
-    }
-  }, []);
   // --- Filters ---
   // Free Shipping
   const freeShipping = useMemo(() => {
