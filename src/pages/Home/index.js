@@ -62,6 +62,7 @@ const Home = () => {
           <NoticePill />
           <Container>
             <Feed>
+      <NoticePill />
               <EstablishmentList>
                 {Array.isArray(establishmentList) &&
                   establishmentList.map((establishment) => {
