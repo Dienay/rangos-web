@@ -1,16 +1,32 @@
-import { Card, Image, Info, Price, Name, OldPrice, Badge } from "./styles";
-import Logo from "../../Images/logo-rangos.svg";
+import {
+  Card,
+  Image,
+  Info,
+  Price,
+  Name,
+  OldPrice,
+  Badge,
+  SoldBadge,
+} from "./styles";
+import Rango from "../../Images/rango.png";
 
 const CardProduct = ({ product, onClick, rank }) => {
   return (
-    <Card onClick={onClick}>
-      {rank && <Badge>{rank}</Badge>}
+    <Card
+      onClick={onClick}
+      aria-label={`Produto rank ${rank}, ${product.name}`}
+    >
+      {rank && (
+        <Badge aria-label={`Posição ${rank}`}>
+          <span>{rank}</span>
+        </Badge>
+      )}
       <Image
         src={product.coverPhoto}
         alt={product.name}
         onError={(e) => {
           e.target.onerror = null;
-          e.target.src = Logo;
+          e.target.src = Rango;
         }}
       />
       <Info>
@@ -26,6 +42,11 @@ const CardProduct = ({ product, onClick, rank }) => {
         </Price>
         <Name>{product.name}</Name>
       </Info>
+      {product.totalSales !== undefined && (
+        <SoldBadge aria-label={`${product.soldQuantity} vendidos`}>
+          Vendidos: {product.totalSales}
+        </SoldBadge>
+      )}
     </Card>
   );
 };
