@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const HeaderContainer = styled.div`
   align-items: center;
-  box-shadow: 0 0.5px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: ${({ theme }) => theme.shadows.md};
   display: flex;
   gap: ${({ theme }) => theme.spacing(4)};
   justify-content: space-between;
@@ -65,9 +65,21 @@ export const SearchDropdown = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   border: ${({ theme }) => `${theme.borders.thin} ${theme.colors.borderLight}`};
   border-radius: ${({ theme }) => theme.radius.medium};
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-height: 300px;
+  box-shadow: ${({ theme }) => theme.shadows.lg};
+
+  max-height: ${({ $isOpen }) => ($isOpen ? "300px" : "0")};
+  opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
+  transform: ${({ $isOpen }) =>
+    $isOpen ? "translateY(0)" : "translateY(-10px)"};
+
   overflow-y: auto;
+  overflow-x: hidden;
+
+  pointer-events: ${({ $isOpen }) => ($isOpen ? "auto" : "none")};
+  transition:
+    max-height 0.3s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease;
   z-index: 100;
 
   &::-webkit-scrollbar {
@@ -91,7 +103,7 @@ export const SearchDropdown = styled.div`
     right: auto;
     transform: translateX(calc(-50% + 8px));
     top: 44px;
-    max-height: 200px;
+    max-height: ${({ $isOpen }) => ($isOpen ? "200px" : "0")};
   }
 `;
 
@@ -105,10 +117,11 @@ export const SearchItem = styled.div`
   align-items: center;
   cursor: pointer;
   display: flex;
-  font-size: ${({ theme }) => theme.font.size.base};
   gap: ${({ theme }) => theme.spacing(2)};
   padding: ${({ theme }) => `${theme.spacing(2)} ${theme.spacing(4)}`};
-  transition: background-color 0.2s;
+  transition:
+    background-color 0.2s,
+    opacity 0.3s;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.primary};
