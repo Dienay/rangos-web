@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { Link } from "react-router-dom";
 
 const small = css`
   height: 32px;
@@ -11,6 +12,8 @@ const base = css`
 const large = css`
   height: 64px;
 `;
+
+export const LogoLink = styled(Link)``;
 
 export const LogoStyle = styled.img`
   object-fit: contain;
