@@ -8,7 +8,6 @@ import {
   SignUpLink,
   LoginForm,
   LoginWrapper,
-  LogoLink,
 } from "./styles";
 
 import { useInput } from "../../hooks";
