@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 import {
   LoginContainer,
@@ -12,9 +11,7 @@ import {
 
 import { useInput } from "../../hooks";
 import { InputField, Button, Logo } from "../../components";
-import { env } from "../../utils";
-
-const { API_URL } = env;
+import { login } from "../../api";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -41,53 +38,46 @@ function LoginPage() {
     }));
   };
 
-  const login = async (event) => {
+  const logIn = async (event) => {
     event.preventDefault();
-    const body = {
-      email: form.email,
-      password: form.password,
-    };
-    axios
-      .post(`${API_URL}/login`, body)
-      .then((response) => {
-        console.log("Login response:", response.data);
+    try {
+      const data = await login({ email: form.email, password: form.password });
 
-        window.localStorage.setItem("token", response.data.token);
-        if (response.data.token) {
-          resetInput();
-          navigate("/");
-        } else {
-          navigate("/cadastro");
-        }
-      })
-      .catch((err) => {
-        console.log("Erro:", err.message);
+      window.localStorage.setItem("token", data.token);
+      if (data.token) {
+        resetInput();
+        navigate("/");
+      } else {
+        navigate("/signup");
+      }
+    } catch (err) {
+      console.log("Erro:", err.message);
 
-        if (err.response) {
-          // Somente tente acessar err.response.status se err.response estiver definido
-          if (err.response.status === 404) {
-            setInputError({
-              email: true,
-              emailMessage: "E-mail inválido",
-            });
-          } else if (err.response.status === 422) {
-            setInputError({
-              password: true,
-              passwordMessage: "Senha inválida",
-            });
-          }
-        } else {
-          // Lide com outros tipos de erros aqui
-          console.log("Erro desconhecido", err);
+      if (err.response) {
+        // Somente tente acessar err.response.status se err.response estiver definido
+        if (err.response.status === 404) {
+          setInputError({
+            email: true,
+            emailMessage: "E-mail inválido",
+          });
+        } else if (err.response.status === 422) {
+          setInputError({
+            password: true,
+            passwordMessage: "Senha inválida",
+          });
         }
-      });
+      } else {
+        // Lide com outros tipos de erros aqui
+        console.log("Erro desconhecido", err);
+      }
+    }
   };
 
   return (
     <LoginWrapper>
       <LoginContainer>
         <Logo $variant="large" />
-        <LoginForm onSubmit={login}>
+        <LoginForm onSubmit={logIn}>
           <InputField
             label="E-mail *"
             value={form.email}
