@@ -33,6 +33,7 @@ function Header({ orderLength = 0, products = [], establishments = [] }) {
   const [searchResults, setSearchResults] = useState([]);
 
   const [isOpen, setIsOpen] = useState(false);
+  const [showResults, setShowResults] = useState([]);
   const searchRef = useRef(null);
 
   useEffect(() => {
@@ -60,6 +61,14 @@ function Header({ orderLength = 0, products = [], establishments = [] }) {
 
     setSearchResults([...filteredProducts, ...filteredEstablishments]);
   }, [searchTerm, products, establishments]);
+
+  useEffect(() => {
+    if (searchTerm.trim().length > 0) {
+      setShowResults(searchResults);
+    } else {
+      setTimeout(() => setShowResults([]), 200);
+    }
+  }, [searchResults, searchTerm]);
 
   const navigateToItem = (item) => {
     if (item.type === "product") {
@@ -107,32 +116,30 @@ function Header({ orderLength = 0, products = [], establishments = [] }) {
             onChange={(e) => setSearchTerm(e.target.value)}
             onFocus={() => setIsOpen(true)}
           />
-          {isOpen && (
-            <SearchDropdown>
-              {searchResults.length > 0 ? (
-                searchResults.map((item) => (
-                  <SearchItem
-                    key={`${item.type}-${item._id}`}
-                    onClick={() => navigateToItem(item)}
-                  >
-                    <SearchItemImage
-                      src={item.coverPhoto || DefaultImage}
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = DefaultImage;
-                      }}
-                      alt={item.name}
-                    />
-                    <SearchItemText>{item.name}</SearchItemText>
-                  </SearchItem>
-                ))
-              ) : searchTerm.trim() ? (
-                <SearchItemText style={{ padding: "1rem", color: "#888" }}>
-                  Nenhum resultado encontrado
-                </SearchItemText>
-              ) : null}
-            </SearchDropdown>
-          )}
+          <SearchDropdown $isOpen={isOpen && searchTerm.trim().length > 0}>
+            {showResults.length > 0 ? (
+              showResults.map((item) => (
+                <SearchItem
+                  key={`${item.type}-${item._id}`}
+                  onClick={() => navigateToItem(item)}
+                >
+                  <SearchItemImage
+                    src={item.coverPhoto || DefaultImage}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = DefaultImage;
+                    }}
+                    alt={item.name}
+                  />
+                  <SearchItemText>{item.name}</SearchItemText>
+                </SearchItem>
+              ))
+            ) : searchTerm.trim() ? (
+              <SearchItemText style={{ padding: "1rem", color: "#888" }}>
+                Nenhum resultado encontrado
+              </SearchItemText>
+            ) : null}
+          </SearchDropdown>
         </SearchContainer>
       )}
       <HeaderActions>
