@@ -5,6 +5,7 @@ import { SignUpContainer, SignUpForm, SignUpWrapper, UserType } from "./styles";
 import { useInput } from "../../hooks";
 import { Logo, InputField, Button } from "../../components";
 import { env } from "../../utils";
+import { signup } from "../../api";
 
 const { API_URL } = env;
 
@@ -43,7 +44,7 @@ function SignUp() {
     }));
   };
 
-  const signup = async (event) => {
+  const signUp = async (event) => {
     event.preventDefault();
     const body = {
       name: form.name,
@@ -61,28 +62,28 @@ function SignUp() {
       return;
     }
 
-    axios
-      .post(`${API_URL}/signup`, body)
-      .then((response) => {
-        window.localStorage.setItem("token", response.data.token);
+    try {
+      const data = await signup(body);
+      console.log(data);
 
-        if (response.data.token) {
-          navigate("/home");
-        }
-      })
-      .catch((e) => {
-        if (e.response.data.message.includes("Phone")) {
-          setInputError({
-            phone: true,
-            phoneMessage: "Este número já está sendo usado por alguém",
-          });
-        } else if (e.response.data.message.includes("Email")) {
-          setInputError({
-            email: true,
-            emailMessage: "Este email já está sendo usado por alguém",
-          });
-        }
-      });
+      window.localStorage.setItem("token", data.token);
+
+      if (data.token) {
+        navigate("/");
+      }
+    } catch (err) {
+      if (err.response.data.message.includes("Phone")) {
+        setInputError({
+          phone: true,
+          phoneMessage: "Este número já está sendo usado por alguém",
+        });
+      } else if (err.response.data.message.includes("Email")) {
+        setInputError({
+          email: true,
+          emailMessage: "Este email já está sendo usado por alguém",
+        });
+      }
+    }
   };
 
   const handleUserType = (type) => {
@@ -125,7 +126,7 @@ function SignUp() {
             Estabelecimento
           </Button>
         </UserType>
-        <SignUpForm onSubmit={signup}>
+        <SignUpForm onSubmit={signUp}>
           <InputField
             label="Nome *"
             value={form.name}
