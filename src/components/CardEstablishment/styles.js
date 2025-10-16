@@ -2,7 +2,10 @@ import styled from "styled-components";
 
 export const CardContainer = styled.section`
   border-radius: ${({ theme }) => theme.radius.medium};
-  border: ${({ theme }) => `${theme.borders.thin} ${theme.colors.borderLight}`};
+  border: ${({ theme, $isOpen }) =>
+    $isOpen
+      ? `${theme.borders.thin} ${theme.colors.secondary}`
+      : `${theme.borders.thin} ${theme.colors.borderLight}`};
   box-shadow: ${({ theme }) => theme.shadows.md};
   cursor: pointer;
   display: flex;
@@ -10,7 +13,9 @@ export const CardContainer = styled.section`
   height: 80px;
   min-width: 320px;
   padding: ${({ theme }) => `${theme.spacing(1)} ${theme.spacing(2)}`};
-  transition: transform 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.3s ease;
 
   &:hover {
     transform: translateY(-4px);
@@ -23,6 +28,9 @@ export const EstablishmentLogo = styled.img`
   height: 64px;
   border-radius: ${({ theme }) => theme.radius.medium};
   object-fit: contain;
+  filter: ${({ $isOpen }) =>
+    $isOpen ? "saturate(100%) opacity(1)" : "saturate(20%) opacity(0.5)"};
+  transition: filter 0.3s ease;
 `;
 
 export const CardContent = styled.section`
@@ -36,6 +44,9 @@ export const EstablishmentName = styled.p`
   font-size: ${({ theme }) => theme.font.size.h3};
   line-height: 1;
   font-weight: ${({ theme }) => theme.font.weight.medium};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const EstablishmentCategory = styled.span`
@@ -47,20 +58,6 @@ export const EstablishmentCategory = styled.span`
 export const CardInfo = styled.div`
   display: flex;
   justify-content: space-between;
-`;
-
-export const CardInfoOpening = styled.p`
-  color: ${({ theme }) => theme.colors.textLight};
-  font-size: ${({ theme }) => theme.font.size.small};
-
-  .opened {
-    color: ${({ theme }) => theme.colors.secondary};
-  }
-
-  .closed {
-    color: ${({ theme }) => theme.colors.textLight};
-    opacity: 0.7;
-  }
 `;
 
 export const CardInfoShipping = styled.p`
