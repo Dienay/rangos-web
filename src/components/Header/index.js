@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import {
   BagButton,
   HeaderContainer,
-  LogoLink,
+  LogoContainer,
   SignUpLink,
   SearchInput,
   HeaderActions,
@@ -104,9 +104,9 @@ function Header({ orderLength = 0, products = [], establishments = [] }) {
 
   return (
     <HeaderContainer>
-      <LogoLink to="/">
+      <LogoContainer>
         <Logo $variant="base" />
-      </LogoLink>
+      </LogoContainer>
       {isHomePage && products.length > 0 && establishments.length > 0 && (
         <SearchContainer ref={searchRef}>
           <SearchInput

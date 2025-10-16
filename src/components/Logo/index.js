@@ -1,13 +1,11 @@
-import { LogoStyle } from "./style";
+import { LogoLink, LogoStyle } from "./style";
 import LogoImage from "../../Images/logo-rangos.svg";
-import { Link } from "react-router-dom";
 
-function Logo({ $variant = "normal" }) {
-  return (
-    <Link to="/">
-      <LogoStyle src={LogoImage} alt="Logo Rappi4" $variant={$variant} />
-    </Link>
+function Logo({ $variant = "normal", asLink = true }) {
+  const logoImg = (
+    <LogoStyle src={LogoImage} alt="Logo Rangos" $variant={$variant} />
   );
+  return asLink ? <LogoLink to="/">{logoImg}</LogoLink> : logoImg;
 }
 
 export default Logo;

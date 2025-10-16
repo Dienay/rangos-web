@@ -15,7 +15,7 @@ export const HeaderContainer = styled.div`
   }
 `;
 
-export const LogoLink = styled(Link)`
+export const LogoContainer = styled.div`
   display: inline-block;
   line-height: 0;
   cursor: pointer;
