@@ -34,6 +34,6 @@ export const ArrowButton = styled.button`
     transform: scale(1.05);
   }
 
-  ${({ left }) => left && `left: -1rem;`}
-  ${({ right }) => right && `right: -1rem;`}
+  ${({ $left }) => $left && `left: -1rem;`}
+  ${({ $right }) => $right && `right: -1rem;`}
 `;

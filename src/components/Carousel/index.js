@@ -23,10 +23,10 @@ const Carousel = ({ children }) => {
   return (
     <CarouselContainer>
       <Arrows>
-        <ArrowButton left onClick={() => scroll("left")}>
+        <ArrowButton $left onClick={() => scroll("left")}>
           <ChevronLeft size={24} />
         </ArrowButton>
-        <ArrowButton right onClick={() => scroll("right")}>
+        <ArrowButton $right onClick={() => scroll("right")}>
           <ChevronRight size={24} />
         </ArrowButton>
       </Arrows>

@@ -45,7 +45,7 @@ function Dropdown({ setIsLoggedIn }) {
   return (
     <DropdownContainer ref={dropdownRef}>
       <DropdownButton onClick={toggleDropdown}>Menu</DropdownButton>
-      <DropdownContent isOpen={isOpen}>
+      <DropdownContent $isOpen={isOpen}>
         <DropdownItem href="#option1" onClick={() => onClickMenu("/perfil")}>
           Perfil
         </DropdownItem>
