@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { SignUpContainer, SignUpForm, UserType } from "./styles";
+import { SignUpContainer, SignUpForm, SignUpWrapper, UserType } from "./styles";
 import { useInput } from "../../hooks";
 import { Logo, InputField, Button } from "../../components";
 import { env } from "../../utils";
@@ -104,9 +104,9 @@ function SignUp() {
   }, [handleButtonUserType]);
 
   return (
-    <section className="main-container">
+    <SignUpWrapper>
       <SignUpContainer>
-        <Logo />
+        <Logo $variant="large" />
         <UserType>
           <Button
             onClick={() => {
@@ -189,7 +189,7 @@ function SignUp() {
           </Button>
         </SignUpForm>
       </SignUpContainer>
-    </section>
+    </SignUpWrapper>
   );
 }
 
