@@ -10,6 +10,14 @@ from{
   }
 `;
 
+export const SignUpWrapper = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+`;
+
 export const SignUpContainer = styled.section`
   align-items: center;
   animation-duration: 1s;

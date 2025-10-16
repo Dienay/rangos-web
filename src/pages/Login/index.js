@@ -2,7 +2,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-import { LoginContainer, Text, Link, LoginForm } from "./styles";
+import {
+  LoginContainer,
+  Text,
+  SignUpLink,
+  LoginForm,
+  LoginWrapper,
+  LogoLink,
+} from "./styles";
 
 import { useInput } from "../../hooks";
 import { InputField, Button, Logo } from "../../components";
@@ -78,9 +85,9 @@ function LoginPage() {
   };
 
   return (
-    <section className="main-container">
+    <LoginWrapper>
       <LoginContainer>
-        <Logo />
+        <Logo $variant="large" />
         <LoginForm onSubmit={login}>
           <InputField
             label="E-mail *"
@@ -108,16 +115,10 @@ function LoginPage() {
         </LoginForm>
         <Text>
           Não possui cadastro?
-          <Link
-            onClick={() => {
-              navigate("/cadastro");
-            }}
-          >
-            Clique aqui
-          </Link>
+          <SignUpLink to="/signup">Clique aqui</SignUpLink>
         </Text>
       </LoginContainer>
-    </section>
+    </LoginWrapper>
   );
 }
 
