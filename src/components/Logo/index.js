@@ -1,5 +1,5 @@
 import { LogoLink, LogoStyle } from "./style";
-import LogoImage from "../../Images/logo-rangos.svg";
+import LogoImage from "../../assets/logos/logo-rangos.svg";
 
 function Logo({ $variant = "normal", asLink = true }) {
   const logoImg = (

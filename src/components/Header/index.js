@@ -16,9 +16,9 @@ import {
   SearchItemText,
 } from "./styles";
 import Logo from "../Logo";
-import BagIcon from "../../Images/icons/shopping-bag.svg";
+import BagIcon from "../../assets/icons/shopping-bag.svg";
 import Dropdown from "../Dropdown";
-import DefaultImage from "../../Images/LogoDefault.png";
+import DefaultImage from "../../assets/logos/logo-rangos.svg";
 
 function Header({ orderLength = 0, products = [], establishments = [] }) {
   const navigate = useNavigate();

@@ -15,7 +15,7 @@ import axios from "axios";
 
 import { useProtectedRoute } from "../../hooks";
 
-import iconeVoltar from "../../Images/back.svg";
+import iconeVoltar from "../../assets/icons/back.svg";
 
 function TelaDePerfil() {
   const baseUrl =

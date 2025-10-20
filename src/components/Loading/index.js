@@ -1,6 +1,6 @@
 import React from "react";
 import { ContainerLoading } from "./styles";
-import Logo from "../../Images/logo-rangos-white.svg";
+import Logo from "../../assets/logos/logo-rangos-white.svg";
 
 function Loading() {
   return (
