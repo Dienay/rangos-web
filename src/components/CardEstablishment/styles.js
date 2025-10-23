@@ -64,4 +64,8 @@ export const CardInfoShipping = styled.p`
   color: ${({ theme }) => theme.colors.textLight};
   font-size: ${({ theme }) => theme.font.size.label};
   line-height: 1;
+
+  span {
+    color: ${({ theme }) => theme.colors.secondary};
+  }
 `;

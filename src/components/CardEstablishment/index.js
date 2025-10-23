@@ -16,7 +16,7 @@ const CardEstablishment = ({ establishment, onClick }) => {
   return (
     <CardContainer onClick={onClick} $isOpen={isOpen}>
       <EstablishmentLogo
-        src={establishment.coverPhoto}
+        src={establishment.logo}
         $isOpen={isOpen}
         onError={(e) => {
           e.target.onerror = null;
@@ -31,9 +31,11 @@ const CardEstablishment = ({ establishment, onClick }) => {
           <CardInfoShipping>
             Entrega: {establishment.deliveryTime.min}-
             {establishment.deliveryTime.max} min -
-            {establishment.shipping
-              ? ` R$${establishment.shipping},00`
-              : " grátis"}
+            {establishment.shippingCost ? (
+              ` R$${establishment.shippingCost},00`
+            ) : (
+              <span> grátis</span>
+            )}
           </CardInfoShipping>
         </CardInfo>
       </CardContent>
