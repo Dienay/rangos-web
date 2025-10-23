@@ -9,3 +9,8 @@ export const getTopProducts = async () => {
   const response = await api.get("/products/top");
   return response.data.topProducts;
 };
+
+export const getProductsByEstablishment = async (establishmentId) => {
+  const response = await api.get(`/establishments/${establishmentId}/products`);
+  return response.data.products;
+};
