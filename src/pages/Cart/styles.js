@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { EstablishmentInfo } from "../Establishments/styles";
+import { EstablishmentInfo } from "../Establishment/styles";
 
 export const Cart = styled.div`
   display: flex;

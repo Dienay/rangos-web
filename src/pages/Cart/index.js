@@ -36,7 +36,7 @@ import {
   BtnRemoveQuantidade,
   CardInfo,
   CardTextoDelivery,
-} from "../Establishments/styles";
+} from "../Establishment/styles";
 import axios from "axios";
 import { CarrinhoContext } from "../../contexts";
 import { useProtectedRoute } from "../../hooks";
