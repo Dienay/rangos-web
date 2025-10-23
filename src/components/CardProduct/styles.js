@@ -6,6 +6,7 @@ export const Card = styled.div`
   flex-direction: column;
   min-width: 192px;
   height: 206px;
+  border: ${({ theme }) => `${theme.borders.thin} ${theme.colors.borderLight}`};
   background: ${({ theme }) => theme.colors.backgroundLight};
   border-radius: ${({ theme }) => theme.radius.medium};
   box-shadow: ${({ theme }) => theme.shadows.md};
