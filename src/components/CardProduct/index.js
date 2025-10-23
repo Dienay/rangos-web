@@ -22,7 +22,7 @@ const CardProduct = ({ product, onClick, rank }) => {
         </Badge>
       )}
       <Image
-        src={product.coverPhoto}
+        src={product.productImage}
         alt={product.name}
         onError={(e) => {
           e.target.onerror = null;
