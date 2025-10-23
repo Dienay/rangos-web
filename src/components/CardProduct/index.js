@@ -8,7 +8,7 @@ import {
   Badge,
   SoldBadge,
 } from "./styles";
-import Rango from "../../Images/rango.png";
+import Rango from "../../assets/placeholders/product-placeholder.png";
 
 const CardProduct = ({ product, onClick, rank }) => {
   return (

@@ -7,7 +7,7 @@ import {
   EstablishmentCategory,
   CardInfoShipping,
 } from "./styles";
-import DefaultImage from "../../Images/default.png";
+import DefaultImage from "../../assets/placeholders/establishment-placeholder.png";
 import { isOpenNow } from "../../hooks";
 
 const CardEstablishment = ({ establishment, onClick }) => {

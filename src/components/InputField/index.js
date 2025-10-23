@@ -7,8 +7,8 @@ import {
   Label,
   ViewPasswordIcon,
 } from "./styles";
-import visible from "../../Images/icons/password-visible.svg";
-import hidden from "../../Images/icons/password-hidden.svg";
+import visible from "../../assets/icons/password-visible.svg";
+import hidden from "../../assets/icons/password-hidden.svg";
 
 function InputField({
   label,
