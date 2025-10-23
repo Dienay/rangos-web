@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext, useCallback } from "react";
-import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { Loading } from "../../components";
@@ -24,14 +23,12 @@ import {
   EstablishmentLogo,
 } from "./styles";
 
-import { env } from "../../utils";
 import { Header } from "../../components";
+import { getEstablishmentById, getProductsByEstablishment } from "../../api";
 
 function TelaListaDeRestaurantes() {
   const navigate = useNavigate();
   const pathParams = useParams();
-
-  const { API_URL } = env;
 
   const [establishment, setEstablishment] = useState();
   const [products, setProducts] = useState();
@@ -40,23 +37,27 @@ function TelaListaDeRestaurantes() {
 
   const carrinhoContext = useContext(CarrinhoContext);
 
-  const getRestaurantes = useCallback(async () => {
+  const loadData = useCallback(async () => {
     const id = pathParams.id;
 
     try {
-      const response = await axios.get(
-        `${API_URL}/establishments/${id}/products`,
-      );
-      setEstablishment(response.data.establishment);
-      setProducts(response.data.products);
+      const [establishmentData, productList] = await Promise.all([
+        getEstablishmentById(id),
+        getProductsByEstablishment(id),
+      ]);
+      setEstablishment(establishmentData);
+      setProducts(productList);
     } catch (err) {
       console.log(err);
     }
-  }, [API_URL, pathParams.id]);
+  }, [pathParams.id]);
 
   useEffect(() => {
-    getRestaurantes();
-  }, [getRestaurantes]);
+    loadData();
+  }, [loadData]);
+
+  console.log(establishment);
+  console.log(products);
 
   const abrirBoxQuantidade = (id) => {
     const indexId = products.findIndex((produto) => {
@@ -137,7 +138,8 @@ function TelaListaDeRestaurantes() {
                 <CardInfo CardInfo>{establishment.category}</CardInfo>
                 <CardTextoDelivery>
                   <CardInfo>
-                    Entrega: {establishment.deliveryTime} min - R$
+                    Entrega: {establishment.deliveryTime.min}-
+                    {establishment.deliveryTime.max} min - R$
                     {establishment.shipping},00
                   </CardInfo>
                 </CardTextoDelivery>
